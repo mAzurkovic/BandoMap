@@ -1,7 +1,7 @@
 var map, infoWindow;
 
 function initMap() {
-  latLng = new google.maps.LatLng(49, 123.644)
+  latLng = new google.maps.LatLng(49, 123)
 
   map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: -34.397, lng: 150.644},
@@ -26,7 +26,9 @@ function initMap() {
     handleLocationError(false, infoWindow, map.getCenter());
   }
 
-  addMarker(latLng);
+  map.addListener('click', function(e) {
+   placeMarkerAndPanTo(e.latLng, map);
+  });
 
 }
 
@@ -38,11 +40,19 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   infoWindow.open(map);
 }
 
+// Adds a marker on map when user clicks on a place on the map
+function placeMarkerAndPanTo(latLng, map) {
+  var marker = new google.maps.Marker({
+    position: latLng,
+    map: map
+  });
+  map.panTo(latLng);
+}
+
 function addMarker(coords) {
   var marker = new google.maps.Marker({
     position: coords,
     map: map,
-    icon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
     visible: true
   });
 }
