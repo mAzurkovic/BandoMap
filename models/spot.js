@@ -1,12 +1,12 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var locationSchema = new Schema({
+var spotSchema = new Schema({
   address: String,
   coords: { lat: Number, lng: Number },
   date: { type: Date, default: Date.now }
 });
 
-var Location = mongoose.model('location', locationSchema);
+var Spot = mongoose.model('spot', spotSchema);
 
-module.exports = Location;
+module.exports = Spot;

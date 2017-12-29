@@ -9,7 +9,7 @@ var geocoder = require('geocoder');
 var mongo = require('mongodb');
 var index = require('./routes/index');
 var users = require('./routes/users');
-var Location = require('./models/location');
+var Spot = require('./models/spot');
 
 var app = express();
 
@@ -28,19 +28,26 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', index);
+// app.use('/', index);
 app.use('/users', users);
 
+app.get('/', function(req, res) {
+  Spot.find(function(err, spots) {
+    if (err) return console.error(err);
+    console.log(spots);
+    res.render('index', { title: 'BandoMap', spots: spots });
+  });
+});
 
 app.post('/add', function(req, res) {
   geocoder.geocode(req.body.address, function(err, data) {
 
-    var location = {
+    var spot = {
       address: req.body.address,
       coords: { lat: data.results[0].geometry.location.lat, lng: data.results[0].geometry.location.lng }
     };
-    var newLocation = new Location(location);
-    newLocation.save();
+    var newSpot = new Spot(spot);
+    newSpot.save();
 
   });
 
