@@ -35,7 +35,8 @@ app.get('/', function(req, res) {
   Spot.find(function(err, spots) {
     if (err) return console.error(err);
     console.log(spots);
-    res.render('index', { title: 'BandoMap', spots: spots });
+    res.locals.spots = JSON.stringify(spots)
+    res.render('index', { title: 'BandoMap', spots: JSON.stringify(spots) });
   });
 });
 

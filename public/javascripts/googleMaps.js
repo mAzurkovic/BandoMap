@@ -40,6 +40,8 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   infoWindow.open(map);
 }
 
+console.log({{{spots}}});
+
 // Adds a marker on map when user clicks on a place on the map
 function placeMarkerAndPanTo(latLng, map) {
   var marker = new google.maps.Marker({
