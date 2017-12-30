@@ -40,9 +40,9 @@ function initMap() {
     handleLocationError(false, infoWindow, map.getCenter());
   }
 
-  map.addListener('click', function(e) {
+  /* map.addListener('click', function(e) {
    placeMarkerAndPanTo(e.latLng, map);
-  });
+ }); */
 
   for (var i = 0; i < spots.length; i++) {
     console.log(spots[i].coords);
