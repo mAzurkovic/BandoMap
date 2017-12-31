@@ -32,4 +32,14 @@ router.post('/add', function(req, res) {
   res.redirect('/');
 });
 
+router.get('/upvote/:id', function(req, res) {
+  console.log(req.params.id);
+  res.redirect('/');
+});
+
+router.get('/downvote/:id', function(req, res) {
+  console.log(req.params.id);
+  res.redirect('/');
+});
+
 module.exports = router;
