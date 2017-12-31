@@ -51,7 +51,7 @@ function initMap() {
 
   for (var i = 0; i < spots.length; i++) {
     console.log(spots[i].coords);
-    addMarker(spots[i].coords, spots[i].address, spots[i]._id);
+    addMarker(spots[i].coords, spots[i].address, spots[i]._id, spots[i].points);
   }
 
 }
@@ -73,7 +73,7 @@ function placeMarkerAndPanTo(latLng, map) {
   map.panTo(latLng);
 }
 
-function addMarker(coords, address, id) {
+function addMarker(coords, address, id, points) {
 
   var upvote = "/upvote/" + id;
 
@@ -81,7 +81,8 @@ function addMarker(coords, address, id) {
              '<div id="siteNotice">'+
              '</div>'+
              '<h2 id="firstHeading" class="firstHeading">' + address + '</h2>'+
-             '<h2><a href="/upvote/' + id + '">↑</a> 0 <a href="/downvote/' + id + '">↓</a></h2>' +
+             '<h2><form action="/upvote/'+ id +'" method="POST"><input type="submit" name="upvote" value="↑"/></form>'+ points +
+             '<form action="/downvote/'+ id +'" method="POST"><input type="submit" name="upvote" value="↓"/></form></h2>' +
              '<div id="bodyContent">'+
              '<p>lnjnj</p>'+
              '</div>'+

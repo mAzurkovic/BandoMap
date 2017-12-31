@@ -22,14 +22,50 @@ router.post('/add', function(req, res) {
 
     var spot = {
       address: req.body.address,
-      coords: { lat: data.results[0].geometry.location.lat, lng: data.results[0].geometry.location.lng }
+      coords: { lat: data.results[0].geometry.location.lat, lng: data.results[0].geometry.location.lng },
+      points: 0
     };
+
     var newSpot = new Spot(spot);
     newSpot.save();
 
   });
 
   res.redirect('/');
+});
+
+router.post('/upvote/:id', function(req, res) {
+  console.log(req.params.id);
+
+  Spot.findById(req.params.id, function(err, doc) {
+    if (err) {
+      console.log(err);
+    } else {
+      doc.points += 1;
+      doc.save();
+    }
+
+    console.log(doc.points);
+
+    res.redirect('/');
+  });
+});
+
+router.post('/downvote/:id', function(req, res) {
+  console.log(req.params.id);
+
+  Spot.findById(req.params.id, function(err, doc) {
+    if (err) {
+      console.log(err);
+    } else {
+      doc.points -= 1;
+      doc.save();
+    }
+
+    console.log(doc.points);
+
+    res.redirect('/');
+  });
 });
 
 router.get('/upvote/:id', function(req, res) {
