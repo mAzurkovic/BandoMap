@@ -28,10 +28,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// app.use('/', index);
+app.use('/', index);
 app.use('/users', users);
 
-app.get('/', function(req, res) {
+/*app.get('/', function(req, res) {
   Spot.find(function(err, spots) {
     if (err) return console.error(err);
     console.log(spots);
@@ -53,7 +53,7 @@ app.post('/add', function(req, res) {
   });
 
   res.redirect('/');
-});
+}); */
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
