@@ -18,10 +18,12 @@ router.get('/', function(req, res) {
 
 // for adding a new spot
 router.post('/add', function(req, res) {
-  geocoder.geocode(req.body.address, function(err, data) {
+  var location = req.body.address + ", " + req.body.city;
+  console.log(location);
+  geocoder.geocode(location, function(err, data) {
 
     var spot = {
-      address: req.body.address,
+      address: location,
       coords: { lat: data.results[0].geometry.location.lat, lng: data.results[0].geometry.location.lng },
       points: 0
     };

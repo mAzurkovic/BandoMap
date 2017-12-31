@@ -1,19 +1,31 @@
-<h1>BandoMap</h1>
+<h3>BandoMap</h3>
 
 <div id="map"></div>
 
 <br><hr><br>
-
-<a href="/add">Add by address</a>
-<a href="#">Add by clicking</a>
-
-<br><br>
 
 <form action="/add" method="POST">
   <input type="text" placeholder="address" name="address">
   <button type="submit">Add location</button>
 </form>
 
+<div class="row">
+    <form class="col s12" action="/add" method="POST">
+      <div class="row">
+        <div class="input-field col s3">
+          <input id="address" type="text" name="address" class="validate">
+          <label for="address">Address</label>
+        </div>
+        <div class="input-field col s3">
+          <input id="city" type="text" name="city" class="validate">
+          <label for="city">City</label>
+        </div>
+      </div>
+      <button class="btn waves-effect waves-light" type="submit" name="action">Add Spot
+        <i class="material-icons right">send</i>
+      </button>
+    </form>
+  </div>
 
 <script type="text/javascript">
 var map, infoWindow;
@@ -80,9 +92,9 @@ function addMarker(coords, address, id, points) {
   var contentString = '<div id="content">'+
              '<div id="siteNotice">'+
              '</div>'+
-             '<h2 id="firstHeading" class="firstHeading">' + address + '</h2>'+
-             '<h2><form action="/upvote/'+ id +'" method="POST"><input type="submit" name="upvote" value="↑"/></form>'+ points +
-             '<form action="/downvote/'+ id +'" method="POST"><input type="submit" name="upvote" value="↓"/></form></h2>' +
+             '<h5 id="firstHeading" class="firstHeading">' + address + '</h5>'+
+             '<h5><form action="/upvote/'+ id +'" method="POST"><input type="submit" name="upvote" value="↑"/></form>'+ points +
+             '<form action="/downvote/'+ id +'" method="POST"><input type="submit" name="upvote" value="↓"/></form></h5>' +
              '<div id="bodyContent">'+
              '<p>lnjnj</p>'+
              '</div>'+

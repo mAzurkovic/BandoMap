@@ -12,6 +12,7 @@
     "express": "~4.15.2",
     "geocoder": "^0.2.3",
     "hbs": "~4.0.1",
+    "materialize-css": "^0.100.2",
     "mongodb": "^3.0.1",
     "mongoose": "^4.13.8",
     "morgan": "~1.8.1",
