@@ -91,7 +91,9 @@ function initMap() {
 
   for (var i = 0; i < spots.length; i++) { // loop through all the locations and render a marker
     console.log(spots[i].coords);
-    addMarker(spots[i].coords, spots[i].address, spots[i]._id, spots[i].points);
+    var outlet = "No";
+    if (spots[i].isOutlet) { outlet = "Yes"; }
+    addMarker(spots[i].coords, spots[i].address, spots[i]._id, spots[i].points, spots[i].type, spots[i].goodFor, outlet);
   }
 
 }
@@ -114,7 +116,7 @@ function placeMarkerAndPanTo(latLng, map) {
 }
 
 // adds a marker as well as an info box containing the rating of the spot
-function addMarker(coords, address, id, points) {
+function addMarker(coords, address, id, points, type, goodFor, hasOutlet) {
 
   var upvote = "/upvote/" + id;
   // string that is used to render the html in the info box
@@ -125,6 +127,7 @@ function addMarker(coords, address, id, points) {
              '<h5><form action="/upvote/'+ id +'" method="POST"><input type="submit" name="upvote" value="↑"/></form>'+ points +
              '<form action="/downvote/'+ id +'" method="POST"><input type="submit" name="upvote" value="↓"/></form></h5>' +
              '<div id="bodyContent">'+
+             '<h5>This spot is a ' + type + ' and is good for ' + goodFor + ' and does is have an outlet: ' + hasOutlet + '</h5>' +
              '</div>'+
              '</div>';
 
