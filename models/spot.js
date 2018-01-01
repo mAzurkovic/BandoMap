@@ -5,6 +5,9 @@ var spotSchema = new Schema({
   address: String,
   coords: { lat: Number, lng: Number },
   points: Number,
+  type: String,
+  goodFor: String,
+  isOutlet: Boolean,
   date: { type: Date, default: Date.now }
 });
 

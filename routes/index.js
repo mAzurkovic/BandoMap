@@ -19,13 +19,20 @@ router.get('/', function(req, res) {
 // for adding a new spot
 router.post('/add', function(req, res) {
   var location = req.body.address + ", " + req.body.city;
+  var hasOutlet = false;
   console.log(location);
+
+  if (req.body.yes == "on") {  hasOutlet = true; }
+
   geocoder.geocode(location, function(err, data) {
 
     var spot = {
       address: location,
       coords: { lat: data.results[0].geometry.location.lat, lng: data.results[0].geometry.location.lng },
-      points: 0
+      points: 0,
+      type: req.body.type,
+      goodFor: req.body.goodFor,
+      isOutlet: hasOutlet
     };
 
     var newSpot = new Spot(spot);
@@ -36,6 +43,7 @@ router.post('/add', function(req, res) {
   res.redirect('/');
 });
 
+// upvote a spot
 router.post('/upvote/:id', function(req, res) {
   console.log(req.params.id);
 
@@ -53,6 +61,7 @@ router.post('/upvote/:id', function(req, res) {
   });
 });
 
+// downvote a spot - same as upvoting just subtracting
 router.post('/downvote/:id', function(req, res) {
   console.log(req.params.id);
 

@@ -1,15 +1,12 @@
-<h3>BandoMap</h3>
 
-<div id="map"></div>
-
-<br><hr><br>
-
-<form action="/add" method="POST">
+<!-- <form action="/add" method="POST">
   <input type="text" placeholder="address" name="address">
   <button type="submit">Add location</button>
-</form>
+</form> -->
+<div id="map"></div>
+<div class="container">
 
-<div class="row">
+  <div class="row">
     <form class="col s12" action="/add" method="POST">
       <div class="row">
         <div class="input-field col s3">
@@ -20,23 +17,54 @@
           <input id="city" type="text" name="city" class="validate">
           <label for="city">City</label>
         </div>
+
+        <label>Spot Type</label>
+        <select class="browser-default" name="type">
+          <option value="" disabled selected>Spot Type</option>
+          <option value="Field" name="field">Field</option>
+          <option value="Park" name="park">Park</option>
+          <option value="Forest" name="forest">Forest</option>
+          <option value="Parking Lot (Outdoor)" name="parkingLotOut">Parking Lot (Outdoor)</option>
+          <option value="Parking Lot (Indoor)" name="parkingLotIn">Parking Lot (Indoor)</option>
+          <option value="Building(s)" name="buildings">Building(s)</option>
+          <option value="Other" name="other">Other</option>
+        </select>
+
+        <select class="browser-default" name="goodFor">
+          <option value="" disabled selected>Good For</option>
+          <option value="Racing" name="racing">Racing</option>
+          <option value="Freestyle" name="freestyle">Freestyle</option>
+          <option value="Longrange" name="longrange">Longrange</option>
+          <option value="Everything" name="everything">Everything</option>
+        </select>
+        Has an outlet?
+        <p>
+          <input name="yes" type="radio" id="test1" />
+          <label for="test1">Yes</label>
+        </p>
+        <p>
+          <input name="no" type="radio" id="test2" />
+          <label for="test2">No</label>
+        </p>
+
       </div>
       <button class="btn waves-effect waves-light" type="submit" name="action">Add Spot
         <i class="material-icons right">send</i>
-      </button>
+    </button>
     </form>
   </div>
+</div>
 
 <script type="text/javascript">
 var map, infoWindow;
-var spots = {{{spots}}};
+var spots = {{{spots}}}; // this is the location data from the database
 
 function initMap() {
   latLng = new google.maps.LatLng(49, 123)
 
   map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: -34.397, lng: 150.644},
-    zoom: 10
+    zoom: 8
   });
   infoWindow = new google.maps.InfoWindow;
 
@@ -61,7 +89,7 @@ function initMap() {
    placeMarkerAndPanTo(e.latLng, map);
  }); */
 
-  for (var i = 0; i < spots.length; i++) {
+  for (var i = 0; i < spots.length; i++) { // loop through all the locations and render a marker
     console.log(spots[i].coords);
     addMarker(spots[i].coords, spots[i].address, spots[i]._id, spots[i].points);
   }
@@ -76,7 +104,7 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   infoWindow.open(map);
 }
 
-// Adds a marker on map when user clicks on a place on the map
+// adds a marker on map when user clicks on a place on the map
 function placeMarkerAndPanTo(latLng, map) {
   var marker = new google.maps.Marker({
     position: latLng,
@@ -85,10 +113,11 @@ function placeMarkerAndPanTo(latLng, map) {
   map.panTo(latLng);
 }
 
+// adds a marker as well as an info box containing the rating of the spot
 function addMarker(coords, address, id, points) {
 
   var upvote = "/upvote/" + id;
-
+  // string that is used to render the html in the info box
   var contentString = '<div id="content">'+
              '<div id="siteNotice">'+
              '</div>'+
@@ -96,7 +125,6 @@ function addMarker(coords, address, id, points) {
              '<h5><form action="/upvote/'+ id +'" method="POST"><input type="submit" name="upvote" value="↑"/></form>'+ points +
              '<form action="/downvote/'+ id +'" method="POST"><input type="submit" name="upvote" value="↓"/></form></h5>' +
              '<div id="bodyContent">'+
-             '<p>lnjnj</p>'+
              '</div>'+
              '</div>';
 
