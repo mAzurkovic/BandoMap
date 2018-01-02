@@ -1,4 +1,26 @@
+
 #map {
   height: 400px;
   width: 100%;
+  height: 100vh;
+}
+
+.nav-container {
+  width: 97%;
+  margin: 0 auto;
+}
+
+#title {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.info {
+  font-size: 18px;
+}
+
+.vote-button {
+  font-size: 18px;
+  border-radius: 45%;
+  border-style: none;
 }

@@ -18,3 +18,6 @@ This project uses MongoDB, and uses mongoose to interface with it. Make sure you
 
 #### Regarding the Google Maps API
 Remember to add your API key to the `index.hbs` file.
+
+### TODO
+* Add a filtering system to filter spots (i.e. only show places with outlets or places good for freestyle)
