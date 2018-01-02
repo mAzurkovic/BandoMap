@@ -84,18 +84,25 @@
 
   <select id="type" onchange="filterMarkers(this.value);">
       <option value="">Please select category</option>
-      <option value="second">second</option>
-      <option value="car">car</option>
+      <option value="Everything">Everything</option>
+      <option value="Freestyle">Freestyle</option>
       <option value="third">third</option>
   </select>
+
+
+    <select id="type" onchange="filterMarkersType(this.value);">
+        <option value="">Please select category</option>
+        <option value="Field">Field</option>
+        <option value="Forest">Forest</option>
+        <option value="Building(s)">Building(s)</option>
+    </select>
 
 </body>
 
 <script type="text/javascript">
 var map, infoWindow;
 var spots = {{{spots}}}; // this is the location data from the database
-var gmarkers1 = [];
-var markers1 = [];
+var allMarkers = [];
 
 function initMap() {
   latLng = new google.maps.LatLng(49, 123)
@@ -130,7 +137,6 @@ function initMap() {
  }); */
 
   for (var i = 0; i < spots.length; i++) { // loop through all the locations and render a marker
-    console.log(spots[i].coords);
     var outlet = "No";
     if (spots[i].isOutlet) { outlet = "Yes"; }
     addMarker(spots[i].coords, spots[i].address, spots[i]._id, spots[i].points, spots[i].type, spots[i].goodFor, outlet);
@@ -179,8 +185,12 @@ function addMarker(coords, address, id, points, type, goodFor, hasOutlet) {
 
   var marker = new google.maps.Marker({
      position: coords,
-     map: map
+     map: map,
+     type: type,
+     goodFor: goodFor
   });
+
+  allMarkers.push(marker);
 
   marker.addListener('click', function() {
     infowindow.open(map, marker);
@@ -188,9 +198,36 @@ function addMarker(coords, address, id, points, type, goodFor, hasOutlet) {
 
 }
 
-function filterMarkers(category) {
-  console.log(category);
+function filterMarkers(goodFor) {
+  console.log(goodFor);
+  for (i = 0; i < spots.length; i++) {
+        marker = allMarkers[i];
+        // If is same category or category not picked
+        if (marker.goodFor == goodFor || goodFor.length === 0) {
+            marker.setVisible(true);
+        }
+        // Categories don't match
+        else {
+            marker.setVisible(false);
+        }
+    }
 }
+
+function filterMarkersType(type) {
+  console.log(type);
+  for (i = 0; i < spots.length; i++) {
+        marker = allMarkers[i];
+        // If is same category or category not picked
+        if (marker.type == type || type.length === 0) {
+            marker.setVisible(true);
+        }
+        // Categories don't match
+        else {
+            marker.setVisible(false);
+        }
+    }
+}
+
 
 </script>
 
