@@ -24,3 +24,8 @@
   border-radius: 45%;
   border-style: none;
 }
+
+.modal { height: 500px !important ; }  /* increase the height and width as you desire */
+.select-dropdown{
+    overflow-y: auto !important;
+}
