@@ -64,6 +64,24 @@
     </div>
   </div>
 </div>
+
+<!-- Modal Structure -->
+  <div id="modalAbout" class="modal">
+    <div class="modal-content">
+      <h4>About</h4>
+      <div class="divider"></div>
+      <h5>General</h5>
+      <p><b>BandoMap</b> is an application that allows for FPV pilots to discover and share new flying locations in thier area. To add a new flying spot,
+        simply press the add button in the bottom right, or from the navigation bar and fill out the form with the information needed.</p>
+      <h5>Version</h5>
+      <p>
+        The current version of this application is <b>Alpha V0.1</b>.
+      </p>
+      <h5>Code base</h5>
+      <p>This is an opensource project initially created by Mattias Zurkovic. If you want to contribute feel free to submit a pull request at the GutHib page.</p>
+    </div>
+  </div>
+
 </body>
 
 <script type="text/javascript">
@@ -76,7 +94,8 @@ function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: -34.397, lng: 150.644},
     zoom: 12,
-    disableDefaultUI: true
+    disableDefaultUI: true,
+    styles: [{"featureType":"water","elementType":"geometry","stylers":[{"color":"#004358"}]},{"featureType":"landscape","elementType":"geometry","stylers":[{"color":"#1f8a70"}]},{"featureType":"poi","elementType":"geometry","stylers":[{"color":"#1f8a70"}]},{"featureType":"road.highway","elementType":"geometry","stylers":[{"color":"#fd7400"}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#1f8a70"},{"lightness":-20}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#1f8a70"},{"lightness":-17}]},{"elementType":"labels.text.stroke","stylers":[{"color":"#ffffff"},{"visibility":"on"},{"weight":0.9}]},{"elementType":"labels.text.fill","stylers":[{"visibility":"on"},{"color":"#ffffff"}]},{"featureType":"poi","elementType":"labels","stylers":[{"visibility":"simplified"}]},{"elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"geometry","stylers":[{"color":"#1f8a70"},{"lightness":-10}]},{},{"featureType":"administrative","elementType":"geometry","stylers":[{"color":"#1f8a70"},{"weight":0.7}]}]
   });
   infoWindow = new google.maps.InfoWindow;
 
@@ -129,37 +148,23 @@ function placeMarkerAndPanTo(latLng, map) {
 
 // adds a marker as well as an info box containing the rating of the spot
 function addMarker(coords, address, id, points, type, goodFor, hasOutlet) {
-
   var upvote = "/upvote/" + id;
   // string that is used to render the html in the info box
-  var contentString = '<div id="content">'+
-             '<div id="siteNotice">'+
-             '</div>'+
-             '<h5 id="firstHeading" class="firstHeading">' + address + '</h5>'+
-             '<h5><form action="/upvote/'+ id +'" method="POST"><input type="submit" name="upvote" value="↑"/></form>'+ points +
-             '<form action="/downvote/'+ id +'" method="POST"><input type="submit" name="upvote" value="↓"/></form></h5>' +
-             '<div id="bodyContent">'+
-             '<h5>This spot is a ' + type + ' and is good for ' + goodFor + ' and does is have an outlet: ' + hasOutlet + '</h5>' +
-             '</div>'+
-             '</div>';
-
-var contentString2 = '<div id="content" class="info"><div class="row"><div class="col s12" id="title"><br>' + address + '</div></div><div class="row"><div class="col s2">'+
+  var contentString2 = '<div id="content" class="info"><div class="row"><div class="col s12" id="title"><br>' + address + '</div></div><div class="row"><div>'+
 '<form action="/upvote/'+ id +'" method="POST">'+
 '<input class="vote-button" type="submit" name="upvote" value="↑"/></form>'+ points +
 '<form action="/downvote/'+ id +'" method="POST">'+
 '<input class="vote-button" type="submit" name="downvote" value="↓"/>'+
-'</form></div><div class="col s10">'+
-'<ul class="collection"><li class="collection-item">Spot type: ' + type + '</li>'+
-'<li class="collection-item">Good for flying: ' + goodFor + '</li>'+
-'<li class="collection-item">Has an outlet for charging: ' + hasOutlet + '</li>'+
-'</div></div></div>';
+'</form></div><div>'+
+'<ul><li>This spot is good for <b>' + goodFor + '</b> and is a <b>' + type + '</b>.</li><li> <div>Are you able to charge packs here: <b>' + hasOutlet +
+'</b></li></ul></div></div></div></div>';
 
   var infowindow = new google.maps.InfoWindow({
     content: contentString2
   });
 
   var icon = {
-    url: "https://camo.githubusercontent.com/cddc882fe09acd291ab88edb3fd8f8f22f511f34/687474703a2f2f69636f6e732e69636f6e617263686976652e636f6d2f69636f6e732f70616f6d656469612f736d616c6c2d6e2d666c61742f3235362f6d61702d6d61726b65722d69636f6e2e706e67", // url
+    url: "https://i.imgur.com/2b7gHaQ.png", // url
     scaledSize: new google.maps.Size(50, 50)
   };
 
@@ -178,5 +183,5 @@ var contentString2 = '<div id="content" class="info"><div class="row"><div class
 </script>
 
 <!-- Reference javascripts for Google Maps API -->
-<!--<script type="text/javascript" src="/javascripts/googleMaps.js"></script>-->
+<script type="text/javascript" src="/javascripts/extra.js"></script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBktahDyXxT0XCyMnbgb0yftsMmJ4rlN1k&callback=initMap"></script>
