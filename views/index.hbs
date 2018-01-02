@@ -82,11 +82,20 @@
     </div>
   </div>
 
+  <select id="type" onchange="filterMarkers(this.value);">
+      <option value="">Please select category</option>
+      <option value="second">second</option>
+      <option value="car">car</option>
+      <option value="third">third</option>
+  </select>
+
 </body>
 
 <script type="text/javascript">
 var map, infoWindow;
 var spots = {{{spots}}}; // this is the location data from the database
+var gmarkers1 = [];
+var markers1 = [];
 
 function initMap() {
   latLng = new google.maps.LatLng(49, 123)
@@ -170,14 +179,17 @@ function addMarker(coords, address, id, points, type, goodFor, hasOutlet) {
 
   var marker = new google.maps.Marker({
      position: coords,
-     map: map,
-     visible: true
+     map: map
   });
 
   marker.addListener('click', function() {
     infowindow.open(map, marker);
   });
 
+}
+
+function filterMarkers(category) {
+  console.log(category);
 }
 
 </script>
