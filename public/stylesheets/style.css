@@ -10,6 +10,10 @@
   margin: 0 auto;
 }
 
+#text {
+  font-size: 16px;
+}
+
 #title {
   font-weight: bold;
   font-size: 20px;
@@ -21,11 +25,32 @@
 
 .vote-button {
   font-size: 18px;
-  border-radius: 45%;
+  border-radius: 50%;
   border-style: none;
+  color: white;
+  width: 30px;
+  height: 30px;
 }
 
 .modal { height: 500px !important ; }  /* increase the height and width as you desire */
 .select-dropdown{
     overflow-y: auto !important;
+}
+
+.up {
+  background-color: #66bb6a;
+}
+
+.up:hover {
+  background-color: #1b5e20;
+  transition: all 0.75s ease 0s;
+}
+
+.down {
+  background-color: #42a5f5;
+}
+
+.down:hover {
+  background-color: #0d47a1;
+  transition: all 0.75s ease 0s;
 }

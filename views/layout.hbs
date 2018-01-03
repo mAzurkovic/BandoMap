@@ -15,6 +15,7 @@
 
 <body>
 
+<div class="navbar-fixed">
 <nav class="deep-purple darken-1">
   <div class="nav-container">
     <div class="nav-wrapper">
@@ -24,26 +25,35 @@
         <li><a href="badges.html">Filter spots</a></li>
         <li><a href="collapsible.html">About</a></li>
       </ul> -->
+      <div class="row">
+        <div class="col s2">
+        </div>
+        <div class="col s8">
+
+        </div>
+      </div>
     </div>
   </div>
 </nav>
+</div>
 
 <ul id="slide-out" class="side-nav fixed">
   <nav class="deep-purple darken-1">
     <div class="nav-container">
       <div class="nav-wrapper">
-        <a href="/" class="brand-logo" style="padding-left: 30px;">BandoMap</a>
+        <a href="/" class="brand-logo" style="padding-left: 30px;"><i class="material-icons">map</i> BandoMap</a>
       </div>
     </div>
   </nav>
+
+
   <br>
-   <li><a class="modal-trigger" href="#modal1"><i class="material-icons">add</i>Add a spot</a></li>
-   <li><a href="#!"><i class="material-icons">search</i>Search location</a></li>
+   <!--<li><a href="#!"><i class="material-icons">search</i>Search location</a></li>-->
   <li><div class="divider"></div></li>
   <li><a class="subheader">Filter Spots</a></li>
 
   <div class="container">
-    <select class='select' id="type" onchange="filterMarkersStyle(this.value);">
+    <select class='select' id="type" onchange="filterMarkersStyle(this.value); Materialize.toast('Filtered!', 2000);">
         <option value="">Flying style</option>
         <option value="Freestyle">Freestyle</option>
         <option value="Racing">Racing</option>
@@ -51,7 +61,7 @@
         <option value="Everything">Everything</option>
     </select>
 
-    <select id="type" onchange="filterMarkersType(this.value);">
+    <select id="type" onchange="filterMarkersType(this.value); Materialize.toast('Filtered!', 2000);">
         <option value="">Spot type</option>
         <option value="Field">Field</option>
         <option value="Park">Park</option>
@@ -66,7 +76,16 @@
 
    <li><div class="divider"></div></li>
    <li><a class="subheader">More</a></li>
+   <li><a class="modal-trigger" href="#modal1"><i class="material-icons">add</i>Add a spot</a></li>
+
    <li><a class="modal-trigger" href="#modalAbout"><i class="material-icons">info</i>About</a></li>
+
+   <div class="card-panel green lighten-4 green-text text-darken-4"><b>Tip!</b> Use control or command + scroll to zoom in and out.</div>
+
+      <div class="card-panel blue lighten-4 blue-text text-darken-4"><b>Welcome!</b> BandoMap is currently in Beta. Visit the <a href="https://github.com/mAzurkovic/BandoMap">
+      GitHub repo</a> to contribute to the project.</div>
+
+
  </ul>
 
 {{{body}}}

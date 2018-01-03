@@ -1,7 +1,6 @@
 <div id="map"></div>
-
 <div class="fixed-action-btn horizontal">
-  <a class="btn-floating btn-large waves-effect waves-light red modal-trigger" href="#modal1">
+  <a class="btn-floating btn-large waves-effect waves-light yellow darken-2 modal-trigger pulse" href="#modal1">
      <i class="material-icons">add</i>
    </a>
 </div>
@@ -45,26 +44,34 @@
                      </select>
             <label>What kind of flying is best here...</label>
           </div>
-          Has an outlet?
-          <p>
-            <input name="yes" type="radio" id="test1" />
-            <label for="test1">Yes</label>
-          </p>
-          <p>
-            <input name="no" type="radio" id="test2" />
-            <label for="test2">No</label>
-          </p>
+
+
+          <div class="row">
+            <p class="col s2">Has an outlet? </p>
+            <p class="col s1">
+              <input name="yes" type="radio" id="test1" />
+              <label for="test1">Yes</label>
+            </p>
+            <p class="col s1">
+              <input name="no" type="radio" id="test2" />
+              <label for="test2">No</label>
+            </p>
+          </div>
 
         </div>
-        <button class="btn waves-effect waves-light" type="submit" name="action">Add Spot
-                      <i class="material-icons right">send</i>
-                    </button>
+
+        <div class="row">
+          <div class="col s12">
+            <button class="btn-large waves-effect waves-light center-align" type="submit" name="action" onclick="Materialize.toast('Spot added, refresh to view it!', 4000)" style="background-color:#fbc02d;">Add Spot
+              <i class="material-icons right">send</i>
+            </button>
+          </div>
+        </div>
 
       </form>
     </div>
   </div>
 </div>
-
 <!-- Modal Structure -->
   <div id="modalAbout" class="modal">
     <div class="modal-content">
@@ -123,8 +130,10 @@ function initMap() {
 
   for (var i = 0; i < spots.length; i++) { // loop through all the locations and render a marker
     var outlet = "No";
+    var date = (spots[i].date).toString().substring(0, 10);
     if (spots[i].isOutlet) { outlet = "Yes"; }
-    addMarker(spots[i].coords, spots[i].address, spots[i]._id, spots[i].points, spots[i].type, spots[i].goodFor, outlet);
+
+    addMarker(spots[i].coords, spots[i].address, spots[i]._id, spots[i].points, spots[i].type, spots[i].goodFor, outlet, date);
   }
 
 }
@@ -147,17 +156,17 @@ function placeMarkerAndPanTo(latLng, map) {
 }
 
 // adds a marker as well as an info box containing the rating of the spot
-function addMarker(coords, address, id, points, type, goodFor, hasOutlet) {
+function addMarker(coords, address, id, points, type, goodFor, hasOutlet, date) {
   var upvote = "/upvote/" + id;
   // string that is used to render the html in the info box
-  var contentString2 = '<div id="content" class="info"><div class="row"><div class="col s12" id="title"><br>' + address + '</div></div><div class="row"><div>'+
-'<form action="/upvote/'+ id +'" method="POST">'+
-'<input class="vote-button" type="submit" name="upvote" value="↑"/></form>'+ points +
-'<form action="/downvote/'+ id +'" method="POST">'+
-'<input class="vote-button" type="submit" name="downvote" value="↓"/>'+
-'</form></div><div>'+
-'<ul><li>This spot is good for <b>' + goodFor + '</b> and is a <b>' + type + '</b>.</li><li> <div>Are you able to charge packs here: <b>' + hasOutlet +
-'</b></li></ul></div></div></div></div>';
+  var contentString2 = '<div id="content" class="info"><div class="row"><div class="col s1.5"><br>' +
+  '<form action="/upvote/'+ id +'" method="POST">'+
+  '<input class="vote-button up" type="submit" name="upvote" value="↑"/></form><b style="padding-left: 10px;">'+ points +
+  '</b><form action="/downvote/'+ id +'" method="POST">'+
+  '<input class="vote-button down" type="submit" name="downvote" value="↓"/>'+
+  '</form></div>' + '<div class="col s10.5" id="text"><br><b>' + address + '</b><ul><li>This spot is good for <b>' + goodFor + '</b> and is a <b>' + type + '</b>.</li><li> <div>Are you able to charge packs here: <b>' + hasOutlet +
+  '</b></li></ul></div></div><div class="divider"></div></div></div></div>'+
+  '</div><br></div><div class="right-align"> Spot added on ' + date + '</div></div>' ;
 
   var infowindow = new google.maps.InfoWindow({
     content: contentString2
