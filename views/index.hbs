@@ -27,7 +27,7 @@
                        <option value="Field" name="field">Field</option>
                        <option value="Park" name="park">Park</option>
                        <option value="Forest" name="forest">Forest</option>
-                       <option value="Parking Lot" name="parkingLotOut">Parking Lot (Outdoor)</option>
+                       <option value="Parking Lot (Outdoor)" name="parkingLotOut">Parking Lot (Outdoor)</option>
                        <option value="Parking Lot (Indoor)" name="parkingLotIn">Parking Lot (Indoor)</option>
                        <option value="Building(s)" name="buildings">Building(s)</option>
                        <option value="Other" name="other">Other</option>
@@ -81,21 +81,6 @@
       <p>This is an opensource project initially created by Mattias Zurkovic. If you want to contribute feel free to submit a pull request at the GutHib page.</p>
     </div>
   </div>
-
-  <select id="type" onchange="filterMarkers(this.value);">
-      <option value="">Please select category</option>
-      <option value="Everything">Everything</option>
-      <option value="Freestyle">Freestyle</option>
-      <option value="third">third</option>
-  </select>
-
-
-    <select id="type" onchange="filterMarkersType(this.value);">
-        <option value="">Please select category</option>
-        <option value="Field">Field</option>
-        <option value="Forest">Forest</option>
-        <option value="Building(s)">Building(s)</option>
-    </select>
 
 </body>
 
@@ -198,7 +183,7 @@ function addMarker(coords, address, id, points, type, goodFor, hasOutlet) {
 
 }
 
-function filterMarkers(goodFor) {
+function filterMarkersStyle(goodFor) {
   console.log(goodFor);
   for (i = 0; i < spots.length; i++) {
         marker = allMarkers[i];

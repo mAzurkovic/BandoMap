@@ -18,22 +18,52 @@
 <nav class="deep-purple darken-1">
   <div class="nav-container">
     <div class="nav-wrapper">
-      <a href="#" data-activates="slide-out" id='button-collapse' class="brand-logo"><i class="material-icons">menu</i>BandoMap</a>
+      <a href="#" data-activates="slide-out" id='button-collapse' class="brand-logo"><i class="material-icons">menu</i></a><!--
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a href="sass.html">Add a spot</a></li>
         <li><a href="badges.html">Filter spots</a></li>
         <li><a href="collapsible.html">About</a></li>
-      </ul>
+      </ul> -->
     </div>
   </div>
 </nav>
 
-<ul id="slide-out" class="side-nav">
-   <li><div class="user-view">
-     <h4>BandoMap</h4>
-   </div></li>
+<ul id="slide-out" class="side-nav fixed">
+  <nav class="deep-purple darken-1">
+    <div class="nav-container">
+      <div class="nav-wrapper">
+        <a href="/" class="brand-logo" style="padding-left: 30px;">BandoMap</a>
+      </div>
+    </div>
+  </nav>
+  <br>
    <li><a class="modal-trigger" href="#modal1"><i class="material-icons">add</i>Add a spot</a></li>
-   <li><a href="#!"><i class="material-icons">search</i>Filter spots</a></li>
+   <li><a href="#!"><i class="material-icons">search</i>Search location</a></li>
+  <li><div class="divider"></div></li>
+  <li><a class="subheader">Filter Spots</a></li>
+
+  <div class="container">
+    <select class='select' id="type" onchange="filterMarkersStyle(this.value);">
+        <option value="">Flying style</option>
+        <option value="Freestyle">Freestyle</option>
+        <option value="Racing">Racing</option>
+        <option value="Longrange">Long range</option>
+        <option value="Everything">Everything</option>
+    </select>
+
+    <select id="type" onchange="filterMarkersType(this.value);">
+        <option value="">Spot type</option>
+        <option value="Field">Field</option>
+        <option value="Park">Park</option>
+        <option value="Forest">Forest</option>
+        <option value="Parking Lot (Outdoor)">Parking Lot (Outdoor)</option>
+        <option value="Parking Lot (Indoor)">Parking Lot (Indoor)</option>
+        <option value="Building(s)">Building(s)</option>
+        <option value="Other">Other</option>
+        <option value="Building(s)">Building(s)</option>
+    </select>
+  </div>
+
    <li><div class="divider"></div></li>
    <li><a class="subheader">More</a></li>
    <li><a class="modal-trigger" href="#modalAbout"><i class="material-icons">info</i>About</a></li>
@@ -45,6 +75,9 @@
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
   <script type="text/javascript">
+  $(document).ready(function(){
+    $('.collapsible').collapsible();
+  });
 
   $(document).ready(function() {
     $('select').material_select();
