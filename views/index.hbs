@@ -22,7 +22,7 @@
 
           <div class="input-field col s6">
             <select class='select' name="type">
-                       <option value="" disabled selected>Spot Type</option>
+                       <option value="" disabled selected>Spot type</option>
                        <option value="Field" name="field">Field</option>
                        <option value="Park" name="park">Park</option>
                        <option value="Forest" name="forest">Forest</option>
@@ -36,33 +36,38 @@
 
           <div class="input-field col s6">
             <select name="goodFor">
-                       <option value="" disabled selected>Good For</option>
+                       <option value="" disabled selected>Flying style</option>
                        <option value="Racing" name="racing">Racing</option>
                        <option value="Freestyle" name="freestyle">Freestyle</option>
                        <option value="Longrange" name="longrange">Longrange</option>
                        <option value="Everything" name="everything">Everything</option>
                      </select>
-            <label>What kind of flying is best here...</label>
+            <label>Good for flying...</label>
           </div>
 
 
           <div class="row">
-            <p class="col s2">Has an outlet? </p>
-            <p class="col s1">
+            <p class="col s12">Does the spot have an outlet? </p>
+          </div>
+          <div class="row">
+            <p>
               <input name="yes" type="radio" id="test1" />
               <label for="test1">Yes</label>
             </p>
-            <p class="col s1">
+          </div>
+          <div class="row">
+            <p>
               <input name="no" type="radio" id="test2" />
               <label for="test2">No</label>
             </p>
           </div>
 
+
         </div>
 
         <div class="row">
           <div class="col s12">
-            <button class="btn-large waves-effect waves-light center-align" type="submit" name="action" onclick="Materialize.toast('Spot added, refresh to view it!', 4000)" style="background-color:#fbc02d;">Add Spot
+            <button class="btn waves-effect waves-light center-align" type="submit" name="action" onclick="Materialize.toast('Spot added, refresh to view it!', 4000)" style="background-color:#fbc02d;">Add Spot
               <i class="material-icons right">send</i>
             </button>
           </div>
@@ -82,16 +87,17 @@
         simply press the add button in the bottom right, or from the navigation bar and fill out the form with the information needed.</p>
       <h5>Version</h5>
       <p>
-        The current version of this application is <b>Alpha V0.1</b>.
+        The current version of this application is <b>Beta v0.1</b>.
       </p>
       <h5>Code base</h5>
-      <p>This is an opensource project initially created by Mattias Zurkovic. If you want to contribute feel free to submit a pull request at the GutHib page.</p>
+      <p>This is an opensource project initially created by Mattias Zurkovic. If you want to contribute feel free to submit a pull request at the <a href="https://github.com/mAzurkovic/BandoMap"> GitHib page</a>.</p>
     </div>
   </div>
 
 </body>
 
 <script type="text/javascript">
+
 var map, infoWindow;
 var spots = {{{spots}}}; // this is the location data from the database
 var allMarkers = [];
@@ -102,6 +108,7 @@ function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: -34.397, lng: 150.644},
     zoom: 12,
+    gestureHandling: 'cooperative',
     disableDefaultUI: true,
     styles: [{"featureType":"water","elementType":"geometry","stylers":[{"color":"#004358"}]},{"featureType":"landscape","elementType":"geometry","stylers":[{"color":"#1f8a70"}]},{"featureType":"poi","elementType":"geometry","stylers":[{"color":"#1f8a70"}]},{"featureType":"road.highway","elementType":"geometry","stylers":[{"color":"#fd7400"}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#1f8a70"},{"lightness":-20}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#1f8a70"},{"lightness":-17}]},{"elementType":"labels.text.stroke","stylers":[{"color":"#ffffff"},{"visibility":"on"},{"weight":0.9}]},{"elementType":"labels.text.fill","stylers":[{"visibility":"on"},{"color":"#ffffff"}]},{"featureType":"poi","elementType":"labels","stylers":[{"visibility":"simplified"}]},{"elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"geometry","stylers":[{"color":"#1f8a70"},{"lightness":-10}]},{},{"featureType":"administrative","elementType":"geometry","stylers":[{"color":"#1f8a70"},{"weight":0.7}]}]
   });
