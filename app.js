@@ -18,7 +18,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://mattias:mattias@ds133597.mlab.com:33597/bandomap');
+mongoose.connect('mongodb://localhost:27017/BandoMap');
 
 // uncomment after placing your favicon in /public
 // app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -28,35 +28,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// show index routes
 app.use('/', index);
 app.use('/users', users);
 
-/*app.get('/', function(req, res) {
-  Spot.find(function(err, spots) {
-    if (err) return console.error(err);
-    console.log(spots);
-    res.locals.spots = JSON.stringify(spots)
-    res.render('index', { title: 'BandoMap', spots: JSON.stringify(spots) });
-  });
-});
-
-app.post('/add', function(req, res) {
-  geocoder.geocode(req.body.address, function(err, data) {
-
-    var spot = {
-      address: req.body.address,
-      coords: { lat: data.results[0].geometry.location.lat, lng: data.results[0].geometry.location.lng }
-    };
-    var newSpot = new Spot(spot);
-    newSpot.save();
-
-  });
-
-  res.redirect('/');
-}); */
-
 // catch 404 and forward to error handler
-
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
