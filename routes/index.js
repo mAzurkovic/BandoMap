@@ -43,6 +43,10 @@ router.post('/add', function(req, res) {
   res.redirect('/');
 });
 
+router.get('/new-spot', function(req, res) {
+  res.render('add', { title: "Add a spot" });
+});
+
 // upvote a spot
 router.post('/upvote/:id', function(req, res) {
   console.log(req.params.id);
