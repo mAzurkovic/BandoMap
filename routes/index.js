@@ -48,9 +48,9 @@ router.post('/add', function(req, res) {
 router.post('/add-by-click', function(req, res) {
   var hasOutlet = false;
 
-  console.log(req.body.name);
+  console.log(req.body.outletButton);
 
-  if (req.body.yes == "on") {  hasOutlet = true; }
+  if (req.body.outletButton == "yes") {  hasOutlet = true; }
 
   var spot = {
     address: null,

@@ -1,171 +1,165 @@
-	<div class="row">
-		<div class="col s12">
-			<ul class="tabs">
-				<li class="tab col s6"><a class="active" href="#test2">Add by clicking on map</a></li>
-				<li class="tab col s6" id="map-tab"><a href="#test3">Add by address</a></li>
-			</ul>
-		</div>
-		<div id="test2" class="col s12"><div id="add-map"></div>
+<div class="row">
+	<div class="col s12">
+		<ul class="tabs deep-purple darken-1">
+			<li class="tab col s6" id="map-tab"><a class="active white-text" href="#test2">Add by clicking on map</a></li>
+			<li class="tab col s6" id="address-tab"><a class="white-text" href="#test3">Add by address</a></li>
+		</ul>
+	</div>
+	<div id="test2" class="col s12">
+		<div id="add-map"></div>
 		<br>
 
 		<div class="container">
-
-		<h4>Additional info...</h4>
-				<div class="row">
-					<form class="col s12" action="/add-by-click" method="POST">
-						<div class="row">
-							<div class="input-field col s6">
-								<input id="spot_name" type="text" name="spot_name" class="validate">
-								<label for="spot_name">Spot name</label>
-							</div>
-							<div class="input-field col s3">
-								<input id="lat" type="text" name="lat" class="validate">
-								<label for="lat">Latitude</label>
-							</div>
-							<div class="input-field col s3">
-								<input id="lng" type="text" name="lng" class="lng">
-								<label for="lng">Longitude</label>
-							</div>
-
-							<div class="input-field col s6">
-								<select class='select' name="type">
-													 <option value="" disabled selected>Spot type</option>
-													 <option value="Field" name="field">Field</option>
-													 <option value="Park" name="park">Park</option>
-													 <option value="Forest" name="forest">Forest</option>
-													 <option value="Parking Lot (Outdoor)" name="parkingLotOut">Parking Lot (Outdoor)</option>
-													 <option value="Parking Lot (Indoor)" name="parkingLotIn">Parking Lot (Indoor)</option>
-													 <option value="Building(s)" name="buildings">Building(s)</option>
-													 <option value="Other" name="other">Other</option>
-												 </select>
-								<label>Type of spot...</label>
-							</div>
-
-							<div class="input-field col s6">
-								<select name="goodFor">
-													 <option value="" disabled selected>Flying style</option>
-													 <option value="Racing" name="racing">Racing</option>
-													 <option value="Freestyle" name="freestyle">Freestyle</option>
-													 <option value="Longrange" name="longrange">Longrange</option>
-													 <option value="Everything" name="everything">Everything</option>
-												 </select>
-								<label>Good for flying...</label>
-							</div>
-
-
+			<div class="row">
+				<div class="col s12 m12">
+					<div class="card">
+						<div class="card-panel">
+							<span class="card-title">Additional info...</span>
+							<p>Click on the map to add your spot, and then fill out the following information.</p>
+							<div class="divider"></div>
 							<div class="row">
-								<p class="col s12">Does the spot have an outlet? </p>
-							</div>
-							<div class="row">
-								<p>
-									<input name="yes" type="radio" id="test1" />
-									<label for="test1">Yes</label>
-								</p>
-							</div>
-							<div class="row">
-								<p>
-									<input name="no" type="radio" id="test2" />
-									<label for="test2">No</label>
-								</p>
-							</div>
+								<form class="col s12" action="/add-by-click" method="POST">
+									<div class="row">
+										<div class="input-field col s6">
+											<input id="spot_name" type="text" name="spot_name" class="validate">
+											<label for="spot_name">Spot name</label>
+										</div>
+										<div class="input-field col s3">
+											<input id="lat" type="text" name="lat" class="validate">
+											<label class="subheader" for="lat">Latitude</label>
+										</div>
+										<div class="input-field col s3">
+											<input id="lng" type="text" name="lng" class="lng">
+											<label for="lng">Longitude</label>
+										</div>
 
+										<div class="input-field col s6">
+											<select class='select' name="type">
+																 <option value="" disabled selected>Spot type</option>
+																 <option value="Field" name="field">Field</option>
+																 <option value="Park" name="park">Park</option>
+																 <option value="Forest" name="forest">Forest</option>
+																 <option value="Parking Lot (Outdoor)" name="parkingLotOut">Parking Lot (Outdoor)</option>
+																 <option value="Parking Lot (Indoor)" name="parkingLotIn">Parking Lot (Indoor)</option>
+																 <option value="Building(s)" name="buildings">Building(s)</option>
+																 <option value="Other" name="other">Other</option>
+															 </select>
+											<label>Type of spot...</label>
+										</div>
+
+										<div class="input-field col s6">
+											<select name="goodFor">
+																 <option value="" disabled selected>Flying style</option>
+																 <option value="Racing" name="racing">Racing</option>
+																 <option value="Freestyle" name="freestyle">Freestyle</option>
+																 <option value="Longrange" name="longrange">Longrange</option>
+																 <option value="Everything" name="everything">Everything</option>
+															 </select>
+											<label>Good for flying...</label>
+										</div>
+										<p class="col s12">Does the spot have an outlet? </p>
+
+										<div style="padding-left: 10px;">
+											<input type="radio" id="under_13" name="outletButton" value="yes"> <label for="under_13" class="light">Yes</label><br>
+											<input type="radio" id="over_13"  name="outletButton" value="no"> <label for="over_13" class="light">No</label>
+
+										</div>
+
+									</div>
+
+									<div class="row">
+										<div class="col s12">
+											<button class="btn waves-effect waves-light center-align" type="submit" name="action" onclick="Materialize.toast('Spot added, refresh to view it!', 4000)" style="background-color:#fbc02d;">Add Spot
+												<i class="material-icons right">send</i>
+											</button>
+										</div>
+									</div>
+
+								</form>
+							</div>
 
 						</div>
-
-						<div class="row">
-							<div class="col s12">
-								<button class="btn waves-effect waves-light center-align" type="submit" name="action" onclick="Materialize.toast('Spot added, refresh to view it!', 4000)" style="background-color:#fbc02d;">Add Spot
-									<i class="material-icons right">send</i>
-								</button>
-							</div>
-						</div>
-
-					</form>
+					</div>
+				</div>
 			</div>
-
-
+		</div>
 
 	</div>
+	<div id="test3" class="col s12">
+		<br><br>
+		<div class="container">
+			<div class="row">
+				<div class="col s12 m12">
+					<div class="card">
+						<div class="card-panel">
+							<span class="card-title">Add a spot by address...</span>
+							<p>Make sure to know the address of your spot, and then fill out the following information.</p>
+							<div class="divider"></div>
+							<div class="row">
+								<form class="col s12" action="/add-by-click" method="POST">
+									<div class="row">
+										<div class="input-field col s6">
+											<input id="address" type="text" name="address" class="validate">
+											<label for="address">Address</label>
+										</div>
+										<div class="input-field col s6">
+											<input id="city" type="text" name="city" class="validate">
+											<label for="city">City</label>
+										</div>
 
-		</div>
-		<div id="test3" class="col s12">
+										<div class="input-field col s6">
+											<select class='select' name="type">
+																 <option value="" disabled selected>Spot type</option>
+																 <option value="Field" name="field">Field</option>
+																 <option value="Park" name="park">Park</option>
+																 <option value="Forest" name="forest">Forest</option>
+																 <option value="Parking Lot (Outdoor)" name="parkingLotOut">Parking Lot (Outdoor)</option>
+																 <option value="Parking Lot (Indoor)" name="parkingLotIn">Parking Lot (Indoor)</option>
+																 <option value="Building(s)" name="buildings">Building(s)</option>
+																 <option value="Other" name="other">Other</option>
+															 </select>
+											<label>Type of spot...</label>
+										</div>
 
-			<div class="container">
+										<div class="input-field col s6">
+											<select name="goodFor">
+																 <option value="" disabled selected>Flying style</option>
+																 <option value="Racing" name="racing">Racing</option>
+																 <option value="Freestyle" name="freestyle">Freestyle</option>
+																 <option value="Longrange" name="longrange">Longrange</option>
+																 <option value="Everything" name="everything">Everything</option>
+															 </select>
+											<label>Good for flying...</label>
+										</div>
+										<p class="col s12">Does the spot have an outlet? </p>
 
-			<h4>Add a spot</h4>
-			    <div class="row">
-			      <form class="col s12" action="/add" method="POST">
-			        <div class="row">
-			          <div class="input-field col s6">
-			            <input id="address" type="text" name="address" class="validate">
-			            <label for="address">Address</label>
-			          </div>
-			          <div class="input-field col s6">
-			            <input id="city" type="text" name="city" class="validate">
-			            <label for="city">City</label>
-			          </div>
+										<div style="padding-left: 10px;">
+										<input type="radio" id="under_13" name="outletButton" value="yes"> <label for="under_13" class="light">Yes</label><br>
+										<input type="radio" id="over_13"  name="outletButton" value="no"> <label for="over_13" class="light">No</label>
 
-			          <div class="input-field col s6">
-			            <select class='select' name="type">
-			                       <option value="" disabled selected>Spot type</option>
-			                       <option value="Field" name="field">Field</option>
-			                       <option value="Park" name="park">Park</option>
-			                       <option value="Forest" name="forest">Forest</option>
-			                       <option value="Parking Lot (Outdoor)" name="parkingLotOut">Parking Lot (Outdoor)</option>
-			                       <option value="Parking Lot (Indoor)" name="parkingLotIn">Parking Lot (Indoor)</option>
-			                       <option value="Building(s)" name="buildings">Building(s)</option>
-			                       <option value="Other" name="other">Other</option>
-			                     </select>
-			            <label>Type of spot...</label>
-			          </div>
+										</div>
 
-			          <div class="input-field col s6">
-			            <select name="goodFor">
-			                       <option value="" disabled selected>Flying style</option>
-			                       <option value="Racing" name="racing">Racing</option>
-			                       <option value="Freestyle" name="freestyle">Freestyle</option>
-			                       <option value="Longrange" name="longrange">Longrange</option>
-			                       <option value="Everything" name="everything">Everything</option>
-			                     </select>
-			            <label>Good for flying...</label>
-			          </div>
+									</div>
 
+									<div class="row">
+										<div class="col s12">
+											<button class="btn waves-effect waves-light center-align" type="submit" name="action" onclick="Materialize.toast('Spot added, refresh to view it!', 4000)" style="background-color:#fbc02d;">Add Spot
+												<i class="material-icons right">send</i>
+											</button>
+										</div>
+									</div>
 
-			          <div class="row">
-			            <p class="col s12">Does the spot have an outlet? </p>
-			          </div>
-			          <div class="row">
-			            <p>
-			              <input name="yes" type="radio" id="test1" />
-			              <label for="test1">Yes</label>
-			            </p>
-			          </div>
-			          <div class="row">
-			            <p>
-			              <input name="no" type="radio" id="test2" />
-			              <label for="test2">No</label>
-			            </p>
-			          </div>
+								</form>
+							</div>
 
-
-			        </div>
-
-			        <div class="row">
-			          <div class="col s12">
-			            <button class="btn waves-effect waves-light center-align" type="submit" name="action" onclick="Materialize.toast('Spot added, refresh to view it!', 4000)" style="background-color:#fbc02d;">Add Spot
-			              <i class="material-icons right">send</i>
-			            </button>
-			          </div>
-			        </div>
-
-			      </form>
+						</div>
+					</div>
 				</div>
-
-
-
+			</div>
 		</div>
+
 	</div>
 </div>
 
 
-	<script type="text/javascript" src="/javascripts/extra.js"></script>
+<script type="text/javascript" src="/javascripts/extra.js"></script>

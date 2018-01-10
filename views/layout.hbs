@@ -77,7 +77,7 @@
 
    <li><div class="divider"></div></li>
    <li><a class="subheader">More</a></li>
-   <li><a class="modal-trigger" href="#modal1"><i class="material-icons">add</i>Add a spot</a></li>
+   <li><a class="modal-trigger" href="/new-spot"><i class="material-icons">add</i>Add a spot</a></li>
 
    <li><a class="modal-trigger" href="#modalAbout"><i class="material-icons">info</i>About</a></li>
 
@@ -92,6 +92,24 @@
 {{{body}}}
 
 
+<!-- Modal Structure -->
+  <div id="modalAbout" class="modal">
+    <div class="modal-content">
+      <h4>About</h4>
+      <div class="divider"></div>
+      <h5>General</h5>
+      <p><b>BandoMap</b> is an application that allows for FPV pilots to discover and share new flying locations in thier area. To add a new flying spot,
+        simply press the add button in the bottom right, or from the navigation bar and fill out the form with the information needed.</p>
+      <h5>Version</h5>
+      <p>
+        The current version of this application is <b>Beta v0.1</b>.
+      </p>
+      <h5>Code base</h5>
+      <p>This is an opensource project initially created by Mattias Zurkovic. If you want to contribute feel free to submit a pull request at the <a href="https://github.com/mAzurkovic/BandoMap"> GitHib page</a>.</p>
+    </div>
+  </div>
+
+
   </div>
 
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBktahDyXxT0XCyMnbgb0yftsMmJ4rlN1k&callback=initMap"></script>
@@ -100,6 +118,16 @@
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
   <script type="text/javascript">
+  $('#address-tab').click(function() {
+      var i = $(this).index();
+      $('#add-map').hide();
+  });
+
+  $('#map-tab').click(function() {
+      var i = $(this).index();
+      $('#add-map').show();
+  });
+
   $(document).ready(function(){
     $('ul.tabs').tabs();
   });
