@@ -140,7 +140,12 @@ function initMap() {
     var date = (spots[i].date).toString().substring(0, 10);
     if (spots[i].isOutlet) { outlet = "Yes"; }
 
-    addMarker(spots[i].coords, spots[i].address, spots[i]._id, spots[i].points, spots[i].type, spots[i].goodFor, outlet, date);
+    if (spots[i].name == null) {
+      addMarker(spots[i].coords, spots[i].address, spots[i]._id, spots[i].points, spots[i].type, spots[i].goodFor, outlet, date);
+    } else {
+      addMarker(spots[i].coords, spots[i].name, spots[i]._id, spots[i].points, spots[i].type, spots[i].goodFor, outlet, date);
+
+    }
   }
 
 }
@@ -233,5 +238,4 @@ function filterMarkersType(type) {
 </script>
 
 <!-- Reference javascripts for Google Maps API -->
-<script type="text/javascript" src="/javascripts/extra.js"></script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBktahDyXxT0XCyMnbgb0yftsMmJ4rlN1k&callback=initMap"></script>
+<!--<script type="text/javascript" src="/javascripts/extra.js"></script>-->

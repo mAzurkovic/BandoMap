@@ -16,7 +16,7 @@ router.get('/', function(req, res) {
   });
 });
 
-// for adding a new spot
+// add by entering an address
 router.post('/add', function(req, res) {
   var location = req.body.address + ", " + req.body.city;
   var hasOutlet = false;
@@ -32,6 +32,7 @@ router.post('/add', function(req, res) {
       points: 0,
       type: req.body.type,
       goodFor: req.body.goodFor,
+      name: null,
       isOutlet: hasOutlet
     };
 
@@ -39,6 +40,30 @@ router.post('/add', function(req, res) {
     newSpot.save();
 
   });
+
+  res.redirect('/');
+});
+
+// add by clicking on map
+router.post('/add-by-click', function(req, res) {
+  var hasOutlet = false;
+
+  console.log(req.body.name);
+
+  if (req.body.yes == "on") {  hasOutlet = true; }
+
+  var spot = {
+    address: null,
+    coords: { lat: req.body.lat, lng: req.body.lng },
+    points: 0,
+    type: req.body.type,
+    goodFor: req.body.goodFor,
+    name: req.body.spot_name,
+    isOutlet: hasOutlet
+  };
+
+  var newSpot = new Spot(spot);
+  newSpot.save();
 
   res.redirect('/');
 });

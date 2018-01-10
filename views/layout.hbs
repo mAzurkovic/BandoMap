@@ -13,17 +13,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 
+
+
 <body>
 
-<div class="navbar-fixed">
-<nav class="deep-purple darken-1">
-  <div class="nav-container">
-    <div class="nav-wrapper">
-      <a href="#" data-activates="slide-out" id='button-collapse' class="brand-logo"><i class="material-icons">menu</i></a>
+  <div class="navbar-fixed">
+  <nav class="deep-purple darken-1">
+    <div class="nav-container">
+      <div class="nav-wrapper">
+        <a href="#" data-activates="slide-out" id='button-collapse' class="brand-logo"><i class="material-icons">menu</i></a>
+      </div>
     </div>
+  </nav>
   </div>
-</nav>
-</div>
+
+  <div class="main">
 
 <ul id="slide-out" class="side-nav fixed">
   <nav class="deep-purple darken-1">
@@ -87,10 +91,19 @@
 
 {{{body}}}
 
+
+  </div>
+
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBktahDyXxT0XCyMnbgb0yftsMmJ4rlN1k&callback=initMap"></script>
+
   <!--Import jQuery before materialize.js-->
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
   <script type="text/javascript">
+  $(document).ready(function(){
+    $('ul.tabs').tabs();
+  });
+
   $(document).ready(function(){
     $('.collapsible').collapsible();
   });

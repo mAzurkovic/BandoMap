@@ -8,6 +8,7 @@ var spotSchema = new Schema({
   type: String,
   goodFor: String,
   isOutlet: Boolean,
+  name: String,
   date: { type: Date, default: Date.now }
 });
 

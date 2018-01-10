@@ -1,8 +1,22 @@
 
+    header, main, footer, .main   {
+      padding-left: 290px;
+    }
+
+    @media only screen and (max-width : 992px) {
+      header, main, footer, .main {
+        padding-left: 0;
+      }
+    }
 #map {
   height: 400px;
   width: 100%;
   height: 100vh;
+}
+
+#add-map {
+  height: 400px;
+  width: 100%;
 }
 
 .nav-container {
