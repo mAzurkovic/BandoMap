@@ -57,7 +57,7 @@ function getCoords(address) {
   });
 }
 
-app.listen(5000, function () {
+app.listen(3000, function () {
   console.log('Example app listening on port !');
 });
 
