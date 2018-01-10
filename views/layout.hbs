@@ -8,7 +8,6 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <!--Import materialize.css-->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-
   <!--Let browser know website is optimized for mobile-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
@@ -18,43 +17,44 @@
 <body>
 
   <div class="navbar-fixed">
-  <nav class="deep-purple darken-1">
-    <div class="nav-container">
-      <div class="nav-wrapper">
-        <a href="#" data-activates="slide-out" id='button-collapse' class="brand-logo"><i class="material-icons">menu</i></a>
+    <nav class="deep-purple darken-1">
+      <div class="nav-container">
+        <div class="nav-wrapper">
+          <a href="#" data-activates="slide-out" id='button-collapse' class="brand-logo"><i class="material-icons">menu</i></a>
+        </div>
       </div>
-    </div>
-  </nav>
+    </nav>
   </div>
 
   <div class="main">
 
-<ul id="slide-out" class="side-nav fixed">
-  <nav class="deep-purple darken-1">
-    <div class="nav-container">
-      <div class="nav-wrapper">
-        <div class="container">
-            <div class="row">
-              <div class="col s2">
-                <i class="material-icons">map</i>
-              </div>
-              <div class="col s10">
-                <a href="/" style="font-weight: bold; font-size: 20px;"> BandoMap</a>
+    <ul id="slide-out" class="side-nav fixed">
+      <nav class="deep-purple darken-1">
+        <div class="nav-container">
+          <div class="nav-wrapper">
+            <div class="container">
+              <div class="row">
+                <div class="col s2">
+                  <i class="material-icons">map</i>
+                </div>
+                <div class="col s10">
+                  <a href="/" style="font-weight: bold; font-size: 20px;"> BandoMap</a>
+                </div>
               </div>
             </div>
+          </div>
         </div>
-      </div>
-    </div>
-  </nav>
+      </nav>
+      <li><a href="/"><i class="material-icons">home</i>View spots</a></li>
+      <li><a class="modal-trigger" href="/new-spot"><i class="material-icons">add</i>Add a spot</a></li>
+      <li><a class="modal-trigger" href="#modalAbout"><i class="material-icons">info</i>About</a></li>
+      <li>
+        <div class="divider"></div>
+      </li>
+      <li><a class="subheader">Filter Spots</a></li>
 
-
-  <br>
-   <!--<li><a href="#!"><i class="material-icons">search</i>Search location</a></li>-->
-  <li><div class="divider"></div></li>
-  <li><a class="subheader">Filter Spots</a></li>
-
-  <div class="container">
-    <select class='select' id="type" onchange="filterMarkersStyle(this.value); Materialize.toast('Filtered!', 2000);">
+      <div class="container">
+        <select class='select' id="type" onchange="filterMarkersStyle(this.value); Materialize.toast('Filtered!', 2000);">
         <option value="">Flying style</option>
         <option value="Freestyle">Freestyle</option>
         <option value="Racing">Racing</option>
@@ -62,7 +62,7 @@
         <option value="Everything">Everything</option>
     </select>
 
-    <select id="type" onchange="filterMarkersType(this.value); Materialize.toast('Filtered!', 2000);">
+        <select id="type" onchange="filterMarkersType(this.value); Materialize.toast('Filtered!', 2000);">
         <option value="">Spot type</option>
         <option value="Field">Field</option>
         <option value="Park">Park</option>
@@ -73,43 +73,32 @@
         <option value="Other">Other</option>
         <option value="Building(s)">Building(s)</option>
     </select>
-  </div>
-
-   <li><div class="divider"></div></li>
-   <li><a class="subheader">More</a></li>
-   <li><a class="modal-trigger" href="/new-spot"><i class="material-icons">add</i>Add a spot</a></li>
-
-   <li><a class="modal-trigger" href="#modalAbout"><i class="material-icons">info</i>About</a></li>
-
-   <div class="card-panel green lighten-4 green-text text-darken-4"><b>Tip!</b> Use control or command + scroll to zoom in and out.</div>
+      </div>
+      <br>
+      <div class="card-panel green lighten-4 green-text text-darken-4"><b>Tip!</b> Use control or command + scroll to zoom in and out.</div>
 
       <div class="card-panel blue lighten-4 blue-text text-darken-4"><b>Welcome!</b> BandoMap is currently in Beta. Visit the <a href="https://github.com/mAzurkovic/BandoMap">
       GitHub repo</a> to contribute to the project.</div>
+    </ul>
 
+    {{{body}}}
 
- </ul>
-
-{{{body}}}
-
-
-<!-- Modal Structure -->
-  <div id="modalAbout" class="modal">
-    <div class="modal-content">
-      <h4>About</h4>
-      <div class="divider"></div>
-      <h5>General</h5>
-      <p><b>BandoMap</b> is an application that allows for FPV pilots to discover and share new flying locations in thier area. To add a new flying spot,
-        simply press the add button in the bottom right, or from the navigation bar and fill out the form with the information needed.</p>
-      <h5>Version</h5>
-      <p>
-        The current version of this application is <b>Beta v0.1</b>.
-      </p>
-      <h5>Code base</h5>
-      <p>This is an opensource project initially created by Mattias Zurkovic. If you want to contribute feel free to submit a pull request at the <a href="https://github.com/mAzurkovic/BandoMap"> GitHib page</a>.</p>
+    <!-- Modal Structure -->
+    <div id="modalAbout" class="modal">
+      <div class="modal-content">
+        <h4>About</h4>
+        <div class="divider"></div>
+        <h5>General</h5>
+        <p><b>BandoMap</b> is an application that allows for FPV pilots to discover and share new flying locations in thier area. To add a new flying spot, simply press the add button in the bottom right, or from the navigation bar and fill out the form
+          with the information needed.</p>
+        <h5>Version</h5>
+        <p>
+          The current version of this application is <b>Beta v0.1</b>.
+        </p>
+        <h5>Code base</h5>
+        <p>This is an opensource project initially created by Mattias Zurkovic. If you want to contribute feel free to submit a pull request at the <a href="https://github.com/mAzurkovic/BandoMap"> GitHib page</a>.</p>
+      </div>
     </div>
-  </div>
-
-
   </div>
 
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBktahDyXxT0XCyMnbgb0yftsMmJ4rlN1k&callback=initMap"></script>
@@ -117,40 +106,8 @@
   <!--Import jQuery before materialize.js-->
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+  <script type="text/javascript" src="/javascripts/documentStyles.js"></script>
   <script type="text/javascript">
-  $('#address-tab').click(function() {
-      var i = $(this).index();
-      $('#add-map').hide();
-  });
-
-  $('#map-tab').click(function() {
-      var i = $(this).index();
-      $('#add-map').show();
-  });
-
-  $(document).ready(function(){
-    $('ul.tabs').tabs();
-  });
-
-  $(document).ready(function(){
-    $('.collapsible').collapsible();
-  });
-
-  $(document).ready(function() {
-    $('select').material_select();
-  });
-
-  $(document).ready(function(){
-    // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
-    $('.modal').modal();
-  });
-
-  (function($){
-    $(function(){
-
-      $('#button-collapse').sideNav();
-
-    }); // end of document ready
-  })(jQuery); // end of jQuery name space
   </script>
+
 </html>

@@ -1,9 +1,9 @@
-<div class="row">
+<div>
 	<div class="col s12">
-		<ul class="tabs deep-purple darken-1">
-			<li class="tab col s6" id="map-tab"><a class="active white-text" href="#test2">Add by clicking on map</a></li>
-			<li class="tab col s6" id="address-tab"><a class="white-text" href="#test3">Add by address</a></li>
-		</ul>
+			<ul class="tabs row deep-purple darken-1">
+				<li class="tab col s6" id="map-tab"><a class="active white-text" href="#test2">Add by clicking on map</a></li>
+				<li class="tab col s6" id="address-tab"><a class="white-text" href="#test3">Add by address</a></li>
+			</ul>
 	</div>
 	<div id="test2" class="col s12">
 		<div id="add-map"></div>
@@ -21,20 +21,20 @@
 								<form class="col s12" action="/add-by-click" method="POST">
 									<div class="row">
 										<div class="input-field col s6">
-											<input id="spot_name" type="text" name="spot_name" class="validate">
+											<input id="spot_name" type="text" name="spot_name" class="validate" required>
 											<label for="spot_name">Spot name</label>
 										</div>
 										<div class="input-field col s3">
-											<input id="lat" type="text" name="lat" class="validate">
+											<input id="lat" type="text" name="lat" class="validate" required>
 											<label class="subheader" for="lat">Latitude</label>
 										</div>
 										<div class="input-field col s3">
-											<input id="lng" type="text" name="lng" class="lng">
+											<input id="lng" type="text" name="lng" class="validate" required>
 											<label for="lng">Longitude</label>
 										</div>
 
 										<div class="input-field col s6">
-											<select class='select' name="type">
+											<select class='select' name="type" required>
 																 <option value="" disabled selected>Spot type</option>
 																 <option value="Field" name="field">Field</option>
 																 <option value="Park" name="park">Park</option>
@@ -48,7 +48,7 @@
 										</div>
 
 										<div class="input-field col s6">
-											<select name="goodFor">
+											<select name="goodFor" required>
 																 <option value="" disabled selected>Flying style</option>
 																 <option value="Racing" name="racing">Racing</option>
 																 <option value="Freestyle" name="freestyle">Freestyle</option>
@@ -60,8 +60,8 @@
 										<p class="col s12">Does the spot have an outlet? </p>
 
 										<div style="padding-left: 10px;">
-											<input type="radio" id="under_13" name="outletButton" value="yes"> <label for="under_13" class="light">Yes</label><br>
-											<input type="radio" id="over_13"  name="outletButton" value="no"> <label for="over_13" class="light">No</label>
+											<input type="radio" id="under_13" name="outletButton" value="yes" required> <label for="under_13" class="light">Yes</label><br>
+											<input type="radio" id="over_13"  name="outletButton" value="no" required> <label for="over_13" class="light">No</label>
 
 										</div>
 
@@ -69,7 +69,7 @@
 
 									<div class="row">
 										<div class="col s12">
-											<button class="btn waves-effect waves-light center-align" type="submit" name="action" onclick="Materialize.toast('Spot added, refresh to view it!', 4000)" style="background-color:#fbc02d;">Add Spot
+											<button class="btn-large waves-effect waves-light center-align" type="submit" name="action" onclick="Materialize.toast('Fill in the form :)', 4000)" style="background-color:#fbc02d;">Add Spot
 												<i class="material-icons right">send</i>
 											</button>
 										</div>
@@ -96,19 +96,19 @@
 							<p>Make sure to know the address of your spot, and then fill out the following information.</p>
 							<div class="divider"></div>
 							<div class="row">
-								<form class="col s12" action="/add-by-click" method="POST">
+								<form class="col s12" action="/add-by-click" method="POST" onsubmit="return checkform(this)">
 									<div class="row">
 										<div class="input-field col s6">
-											<input id="address" type="text" name="address" class="validate">
+											<input id="address" type="text" name="address" class="validate" required>
 											<label for="address">Address</label>
 										</div>
 										<div class="input-field col s6">
-											<input id="city" type="text" name="city" class="validate">
+											<input id="city" type="text" name="city" class="validate" required>
 											<label for="city">City</label>
 										</div>
 
 										<div class="input-field col s6">
-											<select class='select' name="type">
+											<select class='select' name="type" required>
 																 <option value="" disabled selected>Spot type</option>
 																 <option value="Field" name="field">Field</option>
 																 <option value="Park" name="park">Park</option>
@@ -122,7 +122,7 @@
 										</div>
 
 										<div class="input-field col s6">
-											<select name="goodFor">
+											<select name="goodFor" required>
 																 <option value="" disabled selected>Flying style</option>
 																 <option value="Racing" name="racing">Racing</option>
 																 <option value="Freestyle" name="freestyle">Freestyle</option>
@@ -134,8 +134,8 @@
 										<p class="col s12">Does the spot have an outlet? </p>
 
 										<div style="padding-left: 10px;">
-										<input type="radio" id="under_13" name="outletButton" value="yes"> <label for="under_13" class="light">Yes</label><br>
-										<input type="radio" id="over_13"  name="outletButton" value="no"> <label for="over_13" class="light">No</label>
+										<input type="radio" id="under_134" name="outletButton" value="yes" required> <label for="under_134" class="light">Yes</label><br>
+										<input type="radio" id="over_134"  name="outletButton" value="no" required> <label for="over_134" class="light">No</label>
 
 										</div>
 
@@ -143,7 +143,7 @@
 
 									<div class="row">
 										<div class="col s12">
-											<button class="btn waves-effect waves-light center-align" type="submit" name="action" onclick="Materialize.toast('Spot added, refresh to view it!', 4000)" style="background-color:#fbc02d;">Add Spot
+											<button class="btn-large waves-effect waves-light center-align" type="submit" name="action" onclick="Materialize.toast('Fill in the form :)', 4000)" style="background-color:#fbc02d;">Add Spot
 												<i class="material-icons right">send</i>
 											</button>
 										</div>
