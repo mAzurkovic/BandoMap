@@ -1,9 +1,9 @@
 <div>
 	<div class="col s12">
-			<ul class="tabs row deep-purple darken-1">
-				<li class="tab col s6" id="map-tab"><a class="active white-text" href="#test2">Add by clicking on map</a></li>
-				<li class="tab col s6" id="address-tab"><a class="white-text" href="#test3">Add by address</a></li>
-			</ul>
+		<ul class="tabs row deep-purple darken-1">
+			<li class="tab col s6" id="map-tab"><a class="active white-text" href="#test2">Add by clicking on map</a></li>
+			<li class="tab col s6" id="address-tab"><a class="white-text" href="#test3">Add by address</a></li>
+		</ul>
 	</div>
 	<div id="test2" class="col s12">
 		<div id="add-map"></div>
@@ -61,7 +61,7 @@
 
 										<div style="padding-left: 10px;">
 											<input type="radio" id="under_13" name="outletButton" value="yes" required> <label for="under_13" class="light">Yes</label><br>
-											<input type="radio" id="over_13"  name="outletButton" value="no" required> <label for="over_13" class="light">No</label>
+											<input type="radio" id="over_13" name="outletButton" value="no" required> <label for="over_13" class="light">No</label>
 
 										</div>
 
@@ -96,7 +96,7 @@
 							<p>Make sure to know the address of your spot, and then fill out the following information.</p>
 							<div class="divider"></div>
 							<div class="row">
-								<form class="col s12" action="/add-by-click" method="POST" onsubmit="return checkform(this)">
+								<form class="col s12" action="/add-by-address" method="POST" onsubmit="return checkform(this)">
 									<div class="row">
 										<div class="input-field col s6">
 											<input id="address" type="text" name="address" class="validate" required>
@@ -134,8 +134,8 @@
 										<p class="col s12">Does the spot have an outlet? </p>
 
 										<div style="padding-left: 10px;">
-										<input type="radio" id="under_134" name="outletButton" value="yes" required> <label for="under_134" class="light">Yes</label><br>
-										<input type="radio" id="over_134"  name="outletButton" value="no" required> <label for="over_134" class="light">No</label>
+											<input type="radio" id="under_134" name="outletButton" value="yes" required> <label for="under_134" class="light">Yes</label><br>
+											<input type="radio" id="over_134" name="outletButton" value="no" required> <label for="over_134" class="light">No</label>
 
 										</div>
 
@@ -160,6 +160,4 @@
 
 	</div>
 </div>
-
-
-<script type="text/javascript" src="/javascripts/extra.js"></script>
+<script type="text/javascript" src="/javascripts/clickMap.js"></script>

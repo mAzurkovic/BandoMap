@@ -17,12 +17,12 @@ router.get('/', function(req, res) {
 });
 
 // add by entering an address
-router.post('/add', function(req, res) {
+router.post('/add-by-address', function(req, res) {
   var location = req.body.address + ", " + req.body.city;
   var hasOutlet = false;
   console.log(location);
 
-  if (req.body.yes == "on") {  hasOutlet = true; }
+  if (req.body.outletButton == "yes") {  hasOutlet = true; }
 
   geocoder.geocode(location, function(err, data) {
 
