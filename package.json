@@ -6,16 +6,27 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "~1.17.1",
+    "connect-ensure-login": "^0.1.1",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.3",
     "express": "~4.15.2",
+    "express-session": "^1.15.6",
     "geocoder": "^0.2.3",
     "hbs": "~4.0.1",
     "materialize-css": "^0.100.2",
     "mongodb": "^3.0.1",
     "mongoose": "^4.13.8",
     "morgan": "~1.8.1",
-    "serve-favicon": "~2.4.2"
+    "passport": "^0.4.0",
+    "passport-facebook": "^2.1.1",
+    "serve-favicon": "~2.4.2",
+    "session": "^0.1.0"
+  },
+  "devDependencies": {
+    "connect-flash": "^0.1.1",
+    "flash": "^1.1.0",
+    "passport-local": "^1.0.0"
   }
 }

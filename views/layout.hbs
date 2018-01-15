@@ -5,6 +5,7 @@
   <title>{{title}} - Find awesome flying spots</title>
   <link rel='stylesheet' href='/stylesheets/style.css' />
   <!--Import Google Icon Font-->
+  <script defer src="https://use.fontawesome.com/releases/v5.0.4/js/all.js"></script>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <!--Import materialize.css-->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
@@ -74,6 +75,14 @@
         <option value="Building(s)">Building(s)</option>
     </select>
       </div>
+      <div class="divider"></div>
+
+      {{#if user}}
+        <li><a class="modal-trigger" href="#modalUser"><i class="material-icons">person</i> {{user.facebook.name}} </a></li>
+      {{else}}
+        <li><a class="modal-trigger" href="#modalLogin"><i class="material-icons">person</i>Log in </a></li>
+      {{/if}}
+
       <br>
       <div class="card-panel green lighten-4 green-text text-darken-4"><b>Tip!</b> Use control or command + scroll to zoom in and out.</div>
 
@@ -105,6 +114,40 @@
         <p>This is an opensource project initially created by Mattias Zurkovic. If you want to contribute feel free to submit a pull request at the <a href="https://github.com/mAzurkovic/BandoMap"> GitHib page</a>.</p>
       </div>
     </div>
+  </div>
+
+
+  <!-- User Structure -->
+  <div id="modalUser" class="modal">
+    <div class="modal-content">
+      <div class="row">
+        <div class="col s12 center-align">
+          <img class='profile-img' src="http://graph.facebook.com/{{user.facebook.id}}/picture?width=120&height=120" alt="">
+          <h5>{{{user.facebook.name}}}</h5>
+        </div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div class="modal-footer">
+      <a href="/logout" class="modal-action waves-effect waves-green btn-flat ">Logout</a>
+    </div>
+  </div>
+  </div>
+
+  <div id="modalLogin" class="modal">
+    <div class="modal-content">
+      <div class="row">
+        <br>
+        <div class="col s12 center-align">
+          <a class="center-align waves-effect waves-light btn-large blue" href="/auth/facebook"><i class="material-icons left"><i class="fab fa-facebook-f"></i></i>Log in with Facebook</a>
+        </div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div class="modal-footer">
+      <a href="" class="modal-action modal-close waves-effect waves-green btn-flat ">Close</a>
+    </div>
+  </div>
   </div>
 
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBktahDyXxT0XCyMnbgb0yftsMmJ4rlN1k&callback=initMap"></script>

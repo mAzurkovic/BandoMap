@@ -7,6 +7,14 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var geocoder = require('geocoder');
 var mongo = require('mongodb');
+var flash = require('connect-flash');
+var LocalStrategy = require('passport-local').Strategy;
+var FacebookStrategy = require('passport-facebook').Strategy;
+var passport = require('passport');
+var session = require('express-session');
+
+require('./config/passport')(passport); // pass passport for configuration
+
 var index = require('./routes/index');
 var users = require('./routes/users');
 var Spot = require('./models/spot');
@@ -16,6 +24,16 @@ var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
+
+// required for passport
+app.use(session({
+    secret: 'ilovescotchscotchyscotchscotch', // session secret
+    resave: true,
+    saveUninitialized: true
+}));
+app.use(passport.initialize());
+app.use(passport.session()); // persistent login sessions
+app.use(flash()); // use connect-flash for flash messages stored in session
 
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost:27017/BandoMap');
@@ -27,6 +45,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(require('express-session')({ secret: 'keyboard cat', resave: true, saveUninitialized: true }));
 
 // show index routes
 app.use('/', index);

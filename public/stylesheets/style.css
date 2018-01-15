@@ -51,7 +51,7 @@
   height: 30px;
 }
 
-.modal { height: 500px !important ; }  /* increase the height and width as you desire */
+// .modal { height: 500px !important ; }  /* increase the height and width as you desire */
 .select-dropdown{
     overflow-y: auto !important;
 }
@@ -72,4 +72,8 @@
 .down:hover {
   background-color: #0d47a1;
   transition: all 0.75s ease 0s;
+}
+
+.profile-img {
+  border-radius: 50%;
 }
