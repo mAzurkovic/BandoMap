@@ -9,6 +9,8 @@ var spotSchema = new Schema({
   goodFor: String,
   isOutlet: Boolean,
   name: String,
+  personPosting: String,
+  posterID: Number,
   date: { type: Date, default: Date.now }
 });
 

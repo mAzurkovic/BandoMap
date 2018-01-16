@@ -1,8 +1,16 @@
 <div id="map"></div>
 <div class="fixed-action-btn horizontal">
-  <a class="btn-floating btn-large waves-effect waves-light yellow darken-2 modal-trigger pulse" href="/new-spot">
-     <i class="material-icons">add</i>
-   </a>
+{{#if user}}
+
+<a class="btn-floating btn-large waves-effect waves-light yellow darken-2 modal-trigger pulse" href="/new-spot">
+   <i class="material-icons">add</i>
+</a>
+{{else}}
+<a class="btn-floating btn-large waves-effect waves-light yellow darken-2 modal-trigger pulse" href="#modalLogin" onclick="Materialize.toast('Log in first to add a spot', 4000)" >
+   <i class="material-icons">add</i>
+</a>
+{{/if}}
+
 </div>
 
 </body>
@@ -12,6 +20,7 @@
 
 var map, infoWindow;
 var spots = {{{spots}}}; // this is the location data from the database
+
 var allMarkers = [];
 </script>
 <!-- Reference javascripts for Google Maps API -->

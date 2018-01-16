@@ -38,9 +38,9 @@ function initMap() {
     if (spots[i].isOutlet) { outlet = "Yes"; }
 
     if (spots[i].name == null) {
-      addMarker(spots[i].coords, spots[i].address, spots[i]._id, spots[i].points, spots[i].type, spots[i].goodFor, outlet, date);
+      addMarker(spots[i].coords, spots[i].address, spots[i]._id, spots[i].points, spots[i].type, spots[i].goodFor, outlet, date, spots[i].personPosting);
     } else {
-      addMarker(spots[i].coords, spots[i].name, spots[i]._id, spots[i].points, spots[i].type, spots[i].goodFor, outlet, date);
+      addMarker(spots[i].coords, spots[i].name, spots[i]._id, spots[i].points, spots[i].type, spots[i].goodFor, outlet, date, spots[i].personPosting);
 
     }
   }
@@ -65,7 +65,7 @@ function placeMarkerAndPanTo(latLng, map) {
 }
 
 // adds a marker as well as an info box containing the rating of the spot
-function addMarker(coords, address, id, points, type, goodFor, hasOutlet, date) {
+function addMarker(coords, address, id, points, type, goodFor, hasOutlet, date, personPosting) {
   var upvote = "/upvote/" + id;
   // string that is used to render the html in the info box
   var contentString2 = '<div id="content" class="info"><div class="row"><div class="col s1.5"><br>' +
@@ -75,7 +75,7 @@ function addMarker(coords, address, id, points, type, goodFor, hasOutlet, date) 
   '<input class="vote-button down" type="submit" name="downvote" value="↓"/>'+
   '</form></div>' + '<div class="col s10.5" id="text"><br><b>' + address + '</b><ul><li>This spot is good for <b>' + goodFor + '</b> and is a <b>' + type + '</b>.</li><li> <div>Are you able to charge packs here: <b>' + hasOutlet +
   '</b></li></ul></div></div><div class="divider"></div></div></div></div>'+
-  '</div><br></div><div class="right-align"> Spot added on ' + date + '</div></div>' ;
+  '</div><br></div><div class="right-align"> Spot added by ' + personPosting + ' on ' + date + '</div></div>' ;
 
   var infowindow = new google.maps.InfoWindow({
     content: contentString2

@@ -14,6 +14,17 @@ var userSchema = mongoose.Schema({
         name         : String,
         email        : String,
         accepted     : Boolean
+    },
+    favoritedSpots: { Object },
+    build: {
+      frame: String,
+      esc: String,
+      motors: String,
+      fc: String,
+      camera: String,
+      vtx: String,
+      rx: String,
+      hasSet: Boolean
     }
 
 });

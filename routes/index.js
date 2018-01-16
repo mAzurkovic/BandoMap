@@ -65,6 +65,8 @@ router.post('/add-by-click', function(req, res) {
     type: req.body.type,
     goodFor: req.body.goodFor,
     name: req.body.spot_name,
+    personPosting: req.user.facebook.name,
+    posterID: req.user.facebook.id,
     isOutlet: hasOutlet
   };
 
@@ -75,43 +77,57 @@ router.post('/add-by-click', function(req, res) {
 });
 
 router.get('/new-spot', function(req, res) {
-  res.render('add', { title: "Add a spot" });
+  if (req.user) {
+    res.render('add', { title: "Add a spot", user: req.user });
+  } else {
+    res.redirect('/');
+  }
 });
 
 // upvote a spot
 router.post('/upvote/:id', function(req, res) {
   console.log(req.params.id);
 
-  Spot.findById(req.params.id, function(err, doc) {
-    if (err) {
-      console.log(err);
-    } else {
-      doc.points += 1;
-      doc.save();
-    }
+  if (req.user) {
+    Spot.findById(req.params.id, function(err, doc) {
+      if (err) {
+        console.log(err);
+      } else {
+        doc.points += 1;
+        doc.save();
+      }
 
-    console.log(doc.points);
+      console.log(doc.points);
 
+      res.redirect('/');
+    });
+  } else {
     res.redirect('/');
-  });
+  }
+
 });
 
 // downvote a spot - same as upvoting just subtracting
 router.post('/downvote/:id', function(req, res) {
   console.log(req.params.id);
 
-  Spot.findById(req.params.id, function(err, doc) {
-    if (err) {
-      console.log(err);
-    } else {
-      doc.points -= 1;
-      doc.save();
-    }
+  if (req.user) {
+    Spot.findById(req.params.id, function(err, doc) {
+      if (err) {
+        console.log(err);
+      } else {
+        doc.points -= 1;
+        doc.save();
+      }
 
-    console.log(doc.points);
+      console.log(doc.points);
 
+      res.redirect('/');
+    });
+  } else {
     res.redirect('/');
-  });
+  }
+
 });
 
 router.get('/upvote/:id', function(req, res) {
