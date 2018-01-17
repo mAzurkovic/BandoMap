@@ -60,9 +60,9 @@
       <div class="background">
         <img src="https://i.imgur.com/Kb9ScFX.jpg">
       </div>
-      <a href="#!user"><img class="circle" src="http://graph.facebook.com/{{user.facebook.id}}/picture?width=100&height=100"></a>
-      <a href="#!name"><span class="white-text name">{{user.facebook.name}}</span></a>
-      <a href="#!email"><span class="white-text email">{{user.facebook.email}}</span></a>
+      <a class="modal-trigger" href="#modalUser"><img class="circle" src="http://graph.facebook.com/{{user.facebook.id}}/picture?width=100&height=100"></a>
+      <a class="modal-trigger" href="#modalUser"><span class="white-text name">{{user.facebook.name}}</span></a>
+      <a><span class="white-text email">{{user.facebook.email}}</span></a>
       </div></li>
 
       {{/if}}
@@ -126,12 +126,21 @@
           <li>When adding a map, make sure someone has not already added that location.</li>
           <li>Press on a spot marker to view more information about the flying location.</li>
         </ol>
+        <h5>Whats new!</h5>
+        <p>
+          <ol>
+            <li>Integrated with Facebook to allow user authentication.</li>
+          </ol>
+        </p>
         <h5>Version</h5>
         <p>
           The current version of this application is <b>Beta v0.5.0</b>.
         </p>
         <h5>Code base</h5>
         <p>This is an opensource project initially created by Mattias Zurkovic. If you want to contribute feel free to submit a pull request at the <a href="https://github.com/mAzurkovic/BandoMap"> GitHib page</a>.</p>
+      </div>
+      <div class="modal-footer">
+        <a href="" class="modal-action modal-close waves-effect waves-green btn-flat ">Close</a>
       </div>
     </div>
   </div>
@@ -144,17 +153,16 @@
         <div class="col s12 center-align">
           <img class='profile-img' src="http://graph.facebook.com/{{user.facebook.id}}/picture?width=120&height=120" alt="">
           <h5>{{{user.facebook.name}}}</h5>
+          <a href="/logout" class="btn waves-effect waves-green red ">Logout</a>
         </div>
         <div class="divider"></div>
-        <h5>Your build</h5>
         <div class="row">
-
         </div>
       </div>
     </div>
     <div class="divider"></div>
     <div class="modal-footer">
-      <a href="/logout" class="modal-action waves-effect waves-green btn-flat ">Logout</a>
+      <a href="" class="modal-action modal-close waves-effect waves-green btn-flat ">Close</a>
     </div>
   </div>
   </div>

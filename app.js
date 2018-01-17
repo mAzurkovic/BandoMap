@@ -17,6 +17,8 @@ require('./config/passport')(passport); // pass passport for configuration
 
 var index = require('./routes/index');
 var users = require('./routes/users');
+var view = require('./routes/view');
+
 var Spot = require('./models/spot');
 
 var app = express();
@@ -49,6 +51,7 @@ app.use(require('express-session')({ secret: 'keyboard cat', resave: true, saveU
 
 // show index routes
 app.use('/', index);
+app.use('/view', view);
 app.use('/users', users);
 
 // catch 404 and forward to error handler

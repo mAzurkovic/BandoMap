@@ -16,7 +16,7 @@ var router = express.Router();
 router.get('/', function(req, res) {
   Spot.find(function(err, spots) {
     if (err) return console.error(err);
-    console.log(spots);
+  //  console.log(spots);
     res.locals.spots = JSON.stringify(spots)
     res.render('index', { title: 'BandoMap', spots: JSON.stringify(spots), user: req.user });
   });
@@ -26,7 +26,7 @@ router.get('/', function(req, res) {
 router.post('/add-by-address', function(req, res) {
   var location = req.body.address + ", " + req.body.city;
   var hasOutlet = false;
-  console.log(location);
+//  console.log(location);
 
   if (req.body.outletButton == "yes") {  hasOutlet = true; }
 
@@ -129,6 +129,46 @@ router.post('/downvote/:id', function(req, res) {
   }
 
 });
+
+
+router.get('/view/:id', function(req, res) {
+  Spot.findById(req.params.id, function(err, spot) {
+    if (err) {
+      console.log(err);
+    } else {
+      // console.log(spot);
+      res.render('spot', { spot: spot, user: req.user });
+    }
+  });
+});
+
+router.post('/view/:spotID/:commenterID/:commenterName', function(req, res) {
+  var spotID = req.params.spotID;
+  var commenterID = req.params.commenterID;
+  var commenterName = req.params.commenterName;
+
+  var comment = {
+      commenterName: commenterName,
+      commenterID: commenterID,
+      body: req.body.commentText,
+      commentDate: { type: Date, default: Date.now }
+  }
+
+  Spot.findById(spotID, function(err, spot) {
+    if (err) {
+      console.log(err);
+    } else {
+      spot.comments.push(comment);
+      spot.save();
+    }
+
+    console.log(spot.comments);
+
+    res.redirect('/view/' + spotID);
+  });
+
+});
+
 
 router.get('/upvote/:id', function(req, res) {
   console.log(req.params.id);

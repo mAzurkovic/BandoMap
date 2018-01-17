@@ -7,7 +7,7 @@ function initMap() {
     zoom: 12,
     gestureHandling: 'cooperative',
     disableDefaultUI: true,
-    styles: [{"featureType":"water","elementType":"geometry","stylers":[{"color":"#004358"}]},{"featureType":"landscape","elementType":"geometry","stylers":[{"color":"#1f8a70"}]},{"featureType":"poi","elementType":"geometry","stylers":[{"color":"#1f8a70"}]},{"featureType":"road.highway","elementType":"geometry","stylers":[{"color":"#fd7400"}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#1f8a70"},{"lightness":-20}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#1f8a70"},{"lightness":-17}]},{"elementType":"labels.text.stroke","stylers":[{"color":"#ffffff"},{"visibility":"on"},{"weight":0.9}]},{"elementType":"labels.text.fill","stylers":[{"visibility":"on"},{"color":"#ffffff"}]},{"featureType":"poi","elementType":"labels","stylers":[{"visibility":"simplified"}]},{"elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"geometry","stylers":[{"color":"#1f8a70"},{"lightness":-10}]},{},{"featureType":"administrative","elementType":"geometry","stylers":[{"color":"#1f8a70"},{"weight":0.7}]}]
+    styles: globalMapTheme
   });
   infoWindow = new google.maps.InfoWindow;
 
@@ -73,8 +73,10 @@ function addMarker(coords, address, id, points, type, goodFor, hasOutlet, date, 
   '<input class="vote-button up" type="submit" name="upvote" value="↑"/></form><b style="padding-left: 10px;">'+ points +
   '</b><form action="/downvote/'+ id +'" method="POST">'+
   '<input class="vote-button down" type="submit" name="downvote" value="↓"/>'+
-  '</form></div>' + '<div class="col s10.5" id="text"><br><b>' + address + '</b><ul><li>This spot is good for <b>' + goodFor + '</b> and is a <b>' + type + '</b>.</li><li> <div>Are you able to charge packs here: <b>' + hasOutlet +
-  '</b></li></ul></div></div><div class="divider"></div></div></div></div>'+
+  '</form></div>' + '<div class="col s10.5" id="text"><br><b>' + address + '</b><ul><li>This spot is good for <b>' + goodFor + '</b> and is a <b>' + type +
+  '</b>.</li><li> <div>Are you able to charge packs here: <b>' + hasOutlet +
+  '</b></li>'+
+  '<li><a href="/view/' + id + '">View spot...</a></li></ul></div></div><div class="divider"></div></div></div></div>'+
   '</div><br></div><div class="right-align"> Spot added by ' + personPosting + ' on ' + date + '</div></div>' ;
 
   var infowindow = new google.maps.InfoWindow({
