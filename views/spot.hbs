@@ -1,44 +1,84 @@
+<div class="fixed-action-btn horizontal">
+
+{{#if user}}
+<a class="btn-floating btn-large waves-effect waves-light yellow darken-2 modal-trigger" href="#commentsModal">
+   <i class="material-icons">mode_edit</i>
+</a>
+{{else}}
+<a class="btn-floating btn-large waves-effect waves-light yellow darken-2 modal-trigger" href="#modalLogin">
+   <i class="material-icons">mode_edit</i>
+</a>
+{{/if}}
+
+</div>
+
 <div class="container">
-
-  {{#if spot.name}}
-    <h4>{{spot.name}}</h4>
-  {{else}}
-    <h4>{{spot.address}}</h4>
-  {{/if}}
-
-  <h4>Comments</h4>
-
-    <div class="row">
-      <form class="col s12" action="/view/{{spot._id}}/{{user.facebook.id}}/{{user.facebook.name}}" method="POST">
-        <div class="row">
-          <div class="input-field col s6">
-            <input id="comment" type="text" name="commentText" class="validate">
-            <label for="comment">Your comment</label>
-          </div>
-
-        <div class="row">
-          <div class="col s12">
-            <button class="btn-large waves-effect waves-light center-align" type="submit" name="action" style="background-color:#fbc02d;">Add Comment
-              <i class="material-icons right">send</i>
-            </button>
+  <div class="row">
+        <div class="col s12">
+          <div class="card">
+            <div class="card-image">
+              <img src="https://maps.googleapis.com/maps/api/streetview?size=400x400&location={{spot.coords.lat}},{{spot.coords.lng}}&fov=90&heading=235&pitch=10&key=AIzaSyBktahDyXxT0XCyMnbgb0yftsMmJ4rlN1k" alt="">
+              {{#if spot.name}}
+                <span class="card-title">{{spot.name}}</span>
+              {{else}}
+                <span class="card-title">{{spot.address}}</span>
+              {{/if}}
+            </div>
+            <div class="card-content">
+              <p>This spot is a <b>{{spot.type}}</b>, and is best for flying <b>{{spot.goodFor}}</b>.</p>
+              {{#if spot.isOutlet}}
+                <p>Is there an electrical outlet here (to charge packs)? <b>Yes</b>.</p>
+              {{else}}
+              <p>Is there an electrical outlet here (to charge packs)? <b>No</b>.</p>
+              {{/if}}
+            </div>
+            <div class="card-action">
+              <a href="/upvote/{{spot._id}}" method="POST">upvote spot</a>
+            </div>
           </div>
         </div>
+      </div>
 
-      </form>
+          <!-- Modal Structure -->
+          <div id="commentsModal" class="modal bottom-sheet">
+            <div class="modal-content">
+              <h4>Add a comment</h4>
+
+              <div class="row">
+                <form class="col s12" action="/view/{{spot._id}}/{{user.facebook.id}}/{{user.facebook.name}}" method="POST">
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <input id="comment" type="text" name="commentText" class="validate">
+                      <label for="comment">Your comment</label>
+                    </div>
+
+                    <div class="modal-footer">
+                      <button class="modal-action modal-close waves-effect waves-green btn-flat" type="submit" name="action" style="color: #fff; background-color:#fbc02d;">Add Comment
+                        <i class="material-icons right">send</i>
+                      </button>
+                    </div>
+
+                </form>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+
+<h5>Comments</h5>
+{{#each spot.comments}}
+<div class="card" style="margin-bottom: none;">
+  <div class="card-panel">
+    <div class="row">
+      <div class="col s12">
+        <img src="http://graph.facebook.com/{{this.commenterID}}/picture?width=45&height=45" style="float: left; margin-right: 10px;" class="circle">
+        <span class="item">{{this.commenterName}}</span> <br>
+        <span class="comment-item">{{this.body}}</span>
+      </div>
     </div>
-    </div>
-
-      <ul class="collection">
-        {{#each spot.comments}}
-        <li class="collection-item avatar">
-          <img src="http://graph.facebook.com/{{this.commenterID}}/picture?width=120&height=120" alt="" class="circle">
-          <span>{{this.commenterName}}</span>
-          <p style="font-size: 16px;">{{this.body}}
-          </p>
-        </li>
-        {{/each}}
-
-      </ul>
-
+  </div>
+</div>
+{{/each}}
 
 </div>

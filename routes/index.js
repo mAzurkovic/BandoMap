@@ -158,7 +158,7 @@ router.post('/view/:spotID/:commenterID/:commenterName', function(req, res) {
     if (err) {
       console.log(err);
     } else {
-      spot.comments.push(comment);
+      spot.comments.unshift(comment);
       spot.save();
     }
 
