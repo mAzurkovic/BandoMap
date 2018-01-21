@@ -17,7 +17,7 @@
         <div class="col s12">
           <div class="card">
             <div class="card-image">
-              <img src="https://maps.googleapis.com/maps/api/streetview?size=400x400&location={{spot.coords.lat}},{{spot.coords.lng}}&fov=90&heading=235&pitch=10&key=AIzaSyBktahDyXxT0XCyMnbgb0yftsMmJ4rlN1k" alt="">
+              <img src="https://maps.googleapis.com/maps/api/staticmap?center={{spot.coords.lat}},{{spot.coords.lng}}&zoom=13&size=1000x1000&markers={{spot.coords.lat}},{{spot.coords.lng}}&key=AIzaSyBktahDyXxT0XCyMnbgb0yftsMmJ4rlN1k" alt="">
               {{#if spot.name}}
                 <span class="card-title">{{spot.name}}</span>
               {{else}}
