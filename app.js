@@ -38,7 +38,7 @@ app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://mattias:mattias@ds133597.mlab.com:33597/bandomap');
+mongoose.connect('mongodb://localhost:27017/BandoMap');
 
 // uncomment after placing your favicon in /public
 // app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -81,7 +81,7 @@ function getCoords(address) {
 
 // in development, make sure the port is set to 5000
 // for production, set port to 3000
-app.listen(3000, function () {
+app.listen(5000, function () {
   console.log('Example app listening on port !');
 });
 
