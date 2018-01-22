@@ -3,8 +3,8 @@
 
 <head>
   <title>BandoMap - Find awesome flying spots</title>
-  <link rel="icon" 
-      type="image/png" 
+  <link rel="icon"
+      type="image/png"
       href="https://i.imgur.com/uQux3w0.png">
   <link rel='stylesheet' href='/stylesheets/style.css' />
   <!--Import Google Icon Font-->
@@ -156,15 +156,13 @@
         <div class="col s12 center-align">
           <img class='profile-img' src="http://graph.facebook.com/{{user.facebook.id}}/picture?width=120&height=120" alt="">
           <h5>{{{user.facebook.name}}}</h5>
-          <a href="/logout" class="btn waves-effect waves-green red ">Logout</a>
-        </div>
-        <div class="divider"></div>
-        <div class="row">
+          <p>{{user.facebook.email}}</p>
         </div>
       </div>
     </div>
     <div class="divider"></div>
     <div class="modal-footer">
+      <a href="/logout" class="btn waves-effect waves-green red ">Logout</a>
       <a href="" class="modal-action modal-close waves-effect waves-green btn-flat ">Close</a>
     </div>
   </div>

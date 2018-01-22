@@ -15,7 +15,7 @@ var userSchema = mongoose.Schema({
         email        : String,
         accepted     : Boolean
     },
-    favoritedSpots: { Object },
+    favoritedSpots: [],
     build: {
       frame: String,
       esc: String,

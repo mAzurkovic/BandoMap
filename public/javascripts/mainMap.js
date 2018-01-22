@@ -6,7 +6,7 @@ function initMap() {
 
   map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: -34.397, lng: 150.644},
-    zoom: 12,
+    zoom: 11,
     gestureHandling: 'cooperative',
     disableDefaultUI: true,
     styles: styleBright
@@ -70,15 +70,15 @@ function placeMarkerAndPanTo(latLng, map) {
 function addMarker(coords, address, id, points, type, goodFor, hasOutlet, date, personPosting) {
   var upvote = "/upvote/" + id;
   // string that is used to render the html in the info box
-  var contentString2 = '<div id="content" class="info"><div class="row"><div class="col s1.5"><br>' +
+  var contentString2 = '<div id="content" class="info"><div class="row"><div class="col s2"><br>' +
   '<form action="/upvote/'+ id +'" method="POST">'+
   '<input class="vote-button up" type="submit" name="upvote" value="↑"/></form><b style="padding-left: 10px;">'+ points +
   '</b><form action="/downvote/'+ id +'" method="POST">'+
   '<input class="vote-button down" type="submit" name="downvote" value="↓"/>'+
-  '</form></div>' + '<div class="col s10.5" id="text"><br><b>' + address + '</b><ul><li>This spot is good for <b>' + goodFor + '</b> and is a <b>' + type +
-  '</b>.</li><li> <div>Are you able to charge packs here: <b>' + hasOutlet +
-  '</b></li>'+
-  '<li><a href="/view/' + id + '">View spot...</a></li></ul></div></div><div class="divider"></div></div></div></div>'+
+  '</form></div>' + '<div class="col s10" id="text"><br><b>' + address + '</b>'+
+  '<p><i class="inline-icon material-icons">filter_hdr</i>Spot type: <b>' + type + '</b></p>'+
+    '<p><i class="inline-icon material-icons">flight</i>Flying style: <b>' + goodFor + '</b></p>'+
+  '<p><i class="inline-icon material-icons">visibility</i>  <a href="/view/' + id + '">View spot...</a></p></div></div><div class="divider"></div></div></div></div>'+
   '</div><br></div><div class="right-align"> Spot added by ' + personPosting + ' on ' + date + '</div></div>' ;
 
   var infowindow = new google.maps.InfoWindow({

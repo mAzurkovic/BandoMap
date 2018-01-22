@@ -83,3 +83,8 @@
 }
 
 .comment-item {font-size: 16px;}
+
+.inline-icon {
+   vertical-align: middle;
+   padding-right: 5px;
+}

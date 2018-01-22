@@ -11,6 +11,7 @@ var spotSchema = new Schema({
   name: String,
   personPosting: String,
   posterID: Number,
+  flownHere: Number,
   comments: [],
   date: { type: Date, default: Date.now }
 });

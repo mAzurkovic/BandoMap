@@ -20,6 +20,4 @@ This project uses MongoDB, and uses mongoose to interface with it. Make sure you
 Remember to add your API key to the `index.hbs` file.
 
 ### TODO before release
-* Add a filtering system to filter spots (i.e. only show places with outlets or places good for freestyle)
-* Style infoboxes
-* Make sidenav collapsible for mobile clients
+* Fix spot view - add feature

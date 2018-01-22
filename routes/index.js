@@ -2,6 +2,7 @@ var express = require('express');
 var mongoose = require('mongoose');
 var geocoder = require('geocoder');
 var mongo = require('mongodb');
+var dateTime = require('date-and-time');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var FacebookStrategy = require('passport-facebook').Strategy;
@@ -67,7 +68,8 @@ router.post('/add-by-click', function(req, res) {
     name: req.body.spot_name,
     personPosting: req.user.facebook.name,
     posterID: req.user.facebook.id,
-    isOutlet: hasOutlet
+    isOutlet: hasOutlet,
+    flownHere: 0
   };
 
   var newSpot = new Spot(spot);
@@ -76,6 +78,7 @@ router.post('/add-by-click', function(req, res) {
   res.redirect('/');
 });
 
+// get req. to start adding a new spot
 router.get('/new-spot', function(req, res) {
   if (req.user) {
     res.render('add', { title: "Add a spot", user: req.user });
@@ -130,18 +133,20 @@ router.post('/downvote/:id', function(req, res) {
 
 });
 
-
+// viewing a spot route
 router.get('/view/:id', function(req, res) {
   Spot.findById(req.params.id, function(err, spot) {
     if (err) {
       console.log(err);
     } else {
       // console.log(spot);
+      console.log(spot.flownHere);
       res.render('spot', { spot: spot, user: req.user });
     }
   });
 });
 
+// adding a comment route
 router.post('/view/:spotID/:commenterID/:commenterName', function(req, res) {
   var spotID = req.params.spotID;
   var commenterID = req.params.commenterID;
@@ -151,7 +156,7 @@ router.post('/view/:spotID/:commenterID/:commenterName', function(req, res) {
       commenterName: commenterName,
       commenterID: commenterID,
       body: req.body.commentText,
-      commentDate: { type: Date, default: Date.now }
+      commentDate: dateTime.format(new Date(), 'ddd MMM DD YYYY')
   }
 
   Spot.findById(spotID, function(err, spot) {
@@ -169,6 +174,20 @@ router.post('/view/:spotID/:commenterID/:commenterName', function(req, res) {
 
 });
 
+// route to handle how many pilots flew here
+router.post('/flewhere/:spotID/:userID/:userName', function (req, res) {
+  Spot.findById(req.params.spotID, function(err, spot) {
+    if (err) {
+      console.log(err);
+    } else {
+      spot.points++; // also increase the points of the spot
+      spot.flownHere++;
+      spot.save();
+    }
+
+    res.redirect('/view/' + req.params.spotID);
+  });
+});
 
 router.get('/upvote/:id', function(req, res) {
   console.log(req.params.id);
